@@ -1,8 +1,9 @@
-<svg height="128" width="128" xmlns="http://www.w3.org/2000/svg">  
+<svg height="150" width="128" xmlns="http://www.w3.org/2000/svg">  
 
     <!-- COPY_BEGIN -->
-    <g transform="translate(0,0) scale(1)"><!-- TOP -->
-        <polygon points="0,0 128,0 128,128 0,128" style="fill:#808080;stroke:black;stroke-width:1" />
+    <g transform="translate(0,0) scale(1)">
+        <text x="64" y="142" font-family="Verdana" font-size="16" fill="black" style="text-anchor:middle"></text>
+        <polygon points="0,0 128,0 128,128 0,128" style="fill:#808080;stroke:black;stroke-width:2" /><!-- TOP -->
         <polygon transform="translate(4,4)" points="0,0 8,0 8,8 0,8" style="fill:#808080;stroke:black;stroke-width:1" />
         <polygon transform="translate(20,4)" points="0,0 8,0 8,8 0,8" style="fill:#808080;stroke:black;stroke-width:1" />
         <polygon transform="translate(36,4)" points="0,0 8,0 8,8 0,8" style="fill:#808080;stroke:black;stroke-width:1" />
@@ -66,7 +67,7 @@
         <polygon transform="translate(68,116)" points="0,0 8,0 8,8 0,8" style="fill:#808080;stroke:black;stroke-width:1" />
         <polygon transform="translate(84,116)" points="0,0 8,0 8,8 0,8" style="fill:#808080;stroke:black;stroke-width:1" />
         <polygon transform="translate(100,116)" points="0,0 8,0 8,8 0,8" style="fill:#808080;stroke:black;stroke-width:1" />
-        <polygon transform="translate(116,116)" points="0,0 8,0 8,8 0,8" style="fill:#808080;stroke:black;stroke-width:1" />
+        <polygon transform="translate(116,116)" points="0,0 8,0 8,8 0,8" style="fill:#808080;stroke:black;stroke-width:1" />        
         
         <!-- 1x1 A
         <polygon transform="translate(0,0)" points="1,1 15,1 15,15 1,15" style="fill:white;stroke:white;stroke-width:1" /> -->
