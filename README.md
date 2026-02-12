@@ -14,6 +14,6 @@ Level 1 (green 01-22):
 
 ![](art/cards01-22.svg)
 
-Level 2(blue 23-44):
+Level 2 (blue 23-44):
 
 ![](art/cards23-44.svg)
