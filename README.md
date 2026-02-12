@@ -6,7 +6,7 @@ Rubik's Grid Lock
 The first board is what ships with the game. The second solution is printed
 on the inside of the case.
 
-![](art/test.svg)
+![](art/given.svg)
 
 # Cards
 
@@ -20,5 +20,9 @@ Level 2 (blue 23-44):
 
 Level 3 (orange 45-66):
 
+![](art/cards45-66.svg)
+
 Level 4 (red 67-88):
+
+![](art/cards67-88.svg)
 

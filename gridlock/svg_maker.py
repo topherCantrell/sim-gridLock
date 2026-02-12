@@ -109,10 +109,10 @@ class SVGMaker:
 if __name__ == "__main__":
     maker = SVGMaker()
     card_boards = []
-    for card in resources.CARDS[22:]:
+    for card in resources.CARDS[66:]:
         board = resources.make_board(card)
         b = maker.render_board(board)
-        b.set_text(f"{card[:2]}", "blue")
+        b.set_text(f"{card[:2]}", "red")
         card_boards.append(b)
     
         
