@@ -13,6 +13,11 @@ PIECES = {
     'K': (4,3,'yellow'),
 }
 
+GIVEN = [
+    '00:35A23b01C',  # Ships with game
+    '00:36A47B17C',  # Printed on the case
+]
+
 CARDS = [
     '01:17A46b32C',
     '02:62A13b50c',
