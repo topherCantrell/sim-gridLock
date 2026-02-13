@@ -10,19 +10,13 @@ on the inside of the case.
 
 # Cards
 
-Level 1 (green 01-22):
+There are 88 cards. See the complete list here: [all cards](CARDS.md)
 
-![](art/cards01-22.svg)
+There are four levels of 22 cards each from easy to hard. Here is
+one card from each set:
 
-Level 2 (blue 23-44):
+![](art/card_samples.svg)
 
-![](art/cards23-44.svg)
+TODO: What makes one card "harder" than another? Is it the number of solutions?
 
-Level 3 (orange 45-66):
-
-![](art/cards45-66.svg)
-
-Level 4 (red 67-88):
-
-![](art/cards67-88.svg)
-
+TODO: How many possible cards are there? How many of those possible are solvable?

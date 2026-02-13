@@ -108,12 +108,28 @@ class SVGMaker:
 
 if __name__ == "__main__":
     maker = SVGMaker()
-    card_boards = []
-    for card in resources.CARDS[66:]:
-        board = resources.make_board(card)
-        b = maker.render_board(board)
-        b.set_text(f"{card[:2]}", "red")
-        card_boards.append(b)
+    # card_boards = []
+    # for card in resources.CARDS[66:]:    
+    #     board = resources.make_board(card)
+    #     b = maker.render_board(board)
+    #     b.set_text(f"{card[:2]}", "red")
+    #     card_boards.append(b)
+
+    board = resources.make_board(resources.CARDS[0])
+    b1 = maker.render_board(board)
+    b1.set_text("01", "green")
+
+    board = resources.make_board(resources.CARDS[22])
+    b2 = maker.render_board(board)
+    b2.set_text("23", "blue")
+
+    board = resources.make_board(resources.CARDS[44])
+    b3 = maker.render_board(board)
+    b3.set_text("45", "orange")
+
+    board = resources.make_board(resources.CARDS[66])
+    b4 = maker.render_board(board)
+    b4.set_text("67", "red")
     
         
-    maker.make_svg('test.svg', card_boards, 1, with_text=True)
+    maker.make_svg('test.svg', [b1, b2, b3, b4], 1, with_text=True)
