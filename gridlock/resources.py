@@ -112,21 +112,37 @@ CARDS = [
     '88:51A73b50C',
 ]
 
+def can_place_piece(board, letter, x, y):
+    piece = PIECES[letter.upper()]
+    if letter.isupper():
+        for i in range(piece[1]):
+            for j in range(piece[0]):
+                if y+i >= 8 or j+x >= 8:
+                    return False
+                pos = (y+i)*8 + j + x
+                if board[pos] != '.':
+                    return False                
+    else:
+        for i in range(piece[0]):
+            for j in range(piece[1]):
+                if y+i >= 8 or j+x >= 8:
+                    return False
+                pos = (y+i)*8 + j + x
+                if board[pos] != '.':
+                    return False
+    return True                
+
 def place_piece(board, letter, x, y):
     piece = PIECES[letter.upper()]
     if letter.isupper():
         for i in range(piece[1]):
             for j in range(piece[0]):
                 pos = (y+i)*8 + j + x
-                if board[pos] != '.':
-                    return False
                 board[pos] = letter
     else:
         for i in range(piece[0]):
             for j in range(piece[1]):
                 pos = (y+i)*8 + j + x
-                if board[pos] != '.':
-                    return False
                 board[pos] = letter
 
 def make_board(card):
