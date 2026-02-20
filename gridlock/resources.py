@@ -145,6 +145,27 @@ def place_piece(board, letter, x, y):
                 pos = (y+i)*8 + j + x
                 board[pos] = letter
 
+def rotate_board(board, num):
+    ret = board[:]
+    if num >= 4:
+        # Mirror first
+        num -= 4
+        ret = []
+        for i in range(8):
+            ret += board[56-i*8:64-i*8]
+    for _ in range(num):
+        n = ret[:]
+        for y in range(8):
+            for x in range(8):
+                a = n[(7-x)*8 + y]
+                if a not in 'AFJ':
+                    if a.isupper():
+                        a = a.lower()
+                    else:
+                        a = a.upper()
+                ret[8*y + x] = a
+    return ret
+
 def make_board(card):
     board = [
         '.','.','.','.','.','.','.','.',
