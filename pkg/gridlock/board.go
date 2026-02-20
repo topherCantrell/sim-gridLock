@@ -22,6 +22,45 @@ func CreateBoard() Board {
 	}
 }
 
+var scratchBoard Board = CreateBoard()
+
+// Rotate/mirror a given board. The result is stored in the "brd" parameter.
+// The "numRotations" parameter specifies the number of 90 degree clockwise rotations to perform,
+// followed by a mirror if the number is 4 or greater.
+func (b *Board) RotateInto(brd *Board, numRotations int) {
+	if numRotations >= 4 {
+		// Mirror the board first
+		for y := range 8 {
+			for x := range 8 {
+				brd[y*8+x] = b[(7-y)*8+x]
+			}
+		}
+		numRotations -= 4
+	} else {
+		// Just copy the board to the output
+		copy(brd[:], b[:])
+	}
+	for numRotations > 0 {
+		// Copy the board to a scratch space, then rotate it back into the output
+		copy(scratchBoard[:], brd[:])
+		for y := range 8 {
+			for x := range 8 {
+				c := scratchBoard[(7-x)*8+y]
+				// Switch the case of the letter, except for A, F, and J which are symmetrical
+				if c != 'A' && c != 'F' && c != 'J' {
+					if c >= 'a' {
+						c = c & (255 - 32) // Force upper case
+					} else {
+						c = c | 32 // Force lower case
+					}
+				}
+				brd[y*8+x] = c
+			}
+		}
+		numRotations -= 1
+	}
+}
+
 // Count the number of occurances of a value on the board
 func (b *Board) CountValue(val byte) int {
 	ret := 0
