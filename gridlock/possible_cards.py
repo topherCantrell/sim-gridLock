@@ -1,23 +1,10 @@
 from gridlock import resources
 from gridlock.board import Board
 
-total_sols = 0
-
-def check_for_win(board):
-    global total_sols
-    # Check if all pieces are on the board
-    if board.board.count('.') == 0:
-        total_sols += 1
-        # print("Found solution:")
-        # board.print()    
+keeps = set()
 
 def solve(board):
-    global total_sols
-    total_sols = 0
-    _solve_board(board)
-    return total_sols
-
-def _solve_board(board):    
+    global keeps
     # Find the largest piece that isn't on the given board
     fnd = None
     for p in resources.PIECES.values():
@@ -25,7 +12,8 @@ def _solve_board(board):
             fnd = p
             break
     if fnd is None:
-        # All pieces are on the board        
+        # All pieces are on the board
+        keeps.add(''.join(board.board))
         return
     
     # Slide and rotate the piece over the board
@@ -39,15 +27,14 @@ def _solve_board(board):
                 if board.place_piece(fnd, x, y, rot):
                     if fnd[0] == 'K':
                         print("Placed K at", x, y, "rotated?", rot)
-                    check_for_win(board)
-                    _solve_board(board)
+                    # check_for_win(board)
+                    solve(board)
                 board.remove_piece(fnd)
 
 if __name__ == "__main__":
-    import datetime
-    print(datetime.datetime.now())
     b = Board()
+    for skip in 'DEFGHIJK':
+        del resources.PIECES[skip]
     print("Solving...")
-    total = solve(b)
-    print(f"Total solutions found: {total}")
-    print(datetime.datetime.now())
+    solve(b)
+    print(f"Total cards found: {len(keeps)}")

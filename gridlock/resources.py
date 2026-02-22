@@ -1,16 +1,19 @@
 
-PIECES = {
-    'A': (1,1,'white'),
-    'B': (2,1,'white'),
-    'C': (3,1,'white'),
-    'D': (4,1,'green'),
-    'E': (5,1,'green'),
-    'F': (2,2,'red'),
-    'G': (3,2,'blue'),
-    'H': (4,2,'blue'),
-    'I': (5,2,'blue'),
-    'J': (3,3,'orange'),
-    'K': (4,3,'yellow'),
+from gridlock.board import Board
+
+
+PIECES = {    
+    'K': ('K', 4,3,'yellow'),
+    'J': ('J', 3,3,'orange'),
+    'I': ('I', 5,2,'blue'),
+    'H': ('H', 4,2,'blue'),
+    'G': ('G', 3,2,'blue'),
+    'F': ('F', 2,2,'red'),
+    'E': ('E', 5,1,'green'),
+    'D': ('D', 4,1,'green'),
+    'C': ('C', 3,1,'white'),
+    'B': ('B', 2,1,'white'),
+    'A': ('A', 1,1,'white'),
 }
 
 GIVEN = [
@@ -112,81 +115,73 @@ CARDS = [
     '88:51A73b50C',
 ]
 
-def can_place_piece(board, letter, x, y):
-    piece = PIECES[letter.upper()]
-    if letter.isupper():
-        for i in range(piece[1]):
-            for j in range(piece[0]):
-                if y+i >= 8 or j+x >= 8:
-                    return False
-                pos = (y+i)*8 + j + x
-                if board[pos] != '.':
-                    return False                
-    else:
-        for i in range(piece[0]):
-            for j in range(piece[1]):
-                if y+i >= 8 or j+x >= 8:
-                    return False
-                pos = (y+i)*8 + j + x
-                if board[pos] != '.':
-                    return False
-    return True                
+# def can_place_piece(board, letter, x, y):
+#     piece = PIECES[letter.upper()]
+#     if letter.isupper():
+#         for i in range(piece[1]):
+#             for j in range(piece[0]):
+#                 if y+i >= 8 or j+x >= 8:
+#                     return False
+#                 pos = (y+i)*8 + j + x
+#                 if board[pos] != '.':
+#                     return False                
+#     else:
+#         for i in range(piece[0]):
+#             for j in range(piece[1]):
+#                 if y+i >= 8 or j+x >= 8:
+#                     return False
+#                 pos = (y+i)*8 + j + x
+#                 if board[pos] != '.':
+#                     return False
+#     return True                
 
-def place_piece(board, letter, x, y):
-    piece = PIECES[letter.upper()]
-    if letter.isupper():
-        for i in range(piece[1]):
-            for j in range(piece[0]):
-                pos = (y+i)*8 + j + x
-                board[pos] = letter
-    else:
-        for i in range(piece[0]):
-            for j in range(piece[1]):
-                pos = (y+i)*8 + j + x
-                board[pos] = letter
+# def place_piece(board, letter, x, y):
+#     piece = PIECES[letter.upper()]
+#     if letter.isupper():
+#         for i in range(piece[1]):
+#             for j in range(piece[0]):
+#                 pos = (y+i)*8 + j + x
+#                 board[pos] = letter
+#     else:
+#         for i in range(piece[0]):
+#             for j in range(piece[1]):
+#                 pos = (y+i)*8 + j + x
+#                 board[pos] = letter
 
-def rotate_board(board, num):
-    ret = board[:]
-    if num >= 4:
-        # Mirror first
-        num -= 4
-        ret = []
-        for i in range(8):
-            ret += board[56-i*8:64-i*8]
-    for _ in range(num):
-        n = ret[:]
-        for y in range(8):
-            for x in range(8):
-                a = n[(7-x)*8 + y]
-                if a not in 'AFJ':
-                    if a.isupper():
-                        a = a.lower()
-                    else:
-                        a = a.upper()
-                ret[8*y + x] = a
-    return ret
+# def rotate_board(board, num):
+#     ret = board[:]
+#     if num >= 4:
+#         # Mirror first
+#         num -= 4
+#         ret = []
+#         for i in range(8):
+#             ret += board[56-i*8:64-i*8]
+#     for _ in range(num):
+#         n = ret[:]
+#         for y in range(8):
+#             for x in range(8):
+#                 a = n[(7-x)*8 + y]
+#                 if a not in 'AFJ':
+#                     if a.isupper():
+#                         a = a.lower()
+#                     else:
+#                         a = a.upper()
+#                 ret[8*y + x] = a
+#     return ret
 
 def make_board(card):
-    board = [
-        '.','.','.','.','.','.','.','.',
-        '.','.','.','.','.','.','.','.',
-        '.','.','.','.','.','.','.','.',
-        '.','.','.','.','.','.','.','.',
-        '.','.','.','.','.','.','.','.',
-        '.','.','.','.','.','.','.','.',
-        '.','.','.','.','.','.','.','.',
-        '.','.','.','.','.','.','.','.',
-    ]
+    ret = Board()    
 
     card = card[3:]
     for i in range(0, len(card), 3):
-        letter = card[i+2]        
+        letter = card[i+2]
+        piece = PIECES[letter.upper()]        
         x = int(card[i])
         y = int(card[i+1])
-        place_piece(board, letter, x, y)        
+        ret.place_piece(piece, x, y,letter.islower())               
 
-    return board
+    return ret
 
-def print_board(board):
-    for i in range(8):        
-        print(''.join(board[i*8:(i+1)*8]))
+# def print_board(board):
+#     for i in range(8):        
+#         print(''.join(board[i*8:(i+1)*8]))

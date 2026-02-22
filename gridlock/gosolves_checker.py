@@ -68,8 +68,3 @@ for _, v in folded.items():
     total_folded += len(v)
 print('Total folded solutions:', total_folded)
 
-# Ignoring rotations:
-# - How many possible cards are there?
-# - How many winning/losing cards are there?
-# - Are Jacob's cards the same as mine?
-# - Count the solutions for each card. Does this indicate the difficulty?
