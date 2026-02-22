@@ -49,9 +49,9 @@ one card from each difficulty level:
 
 All the cards use pieces A, B, and C. There are more than 88 combinations
 of pieces A, B, and C -- more than 88 starting boards. The A piece has
-64 possible positions. The B piece has 7*8*2 = 112 positions (remember the
-rotations). The C piece has 6*8*2 = 96 positions. If we allow overlaps, we
-have 64*112*96 = 688,128 as an upper limit estimate of the nummber of possible
+64 possible positions. The B piece has 7x8x2 = 112 positions (remember the
+rotations). The C piece has 6x8x2 = 96 positions. If we allow overlaps, we
+have 64x112x96 = 688,128 as an upper limit estimate of the nummber of possible
 cards. But we don't allow overlaps. 
 
 The code in [gridlock/possible_cards.py](gridlock/possible_cards.py) generates
