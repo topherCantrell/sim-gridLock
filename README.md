@@ -21,7 +21,7 @@ EEEEE... HHHHH... KKKKK...
 ![](art/pieces.svg)
 
 The first 3 pieces -- A, B, and C -- are the "fixed" pieces shown on the 88
-cards. Every card shows the position of the three pieces and no other piece.
+cards. Every card shows the position of these three pieces and no other piece.
 
 There are 5 pieces with a height of 1 cell: A, B, C, D, and E. There are 4
 pieces with a height of 2 cells: F, G, H, and I. And there are 2 pieces
