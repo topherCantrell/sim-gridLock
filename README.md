@@ -84,7 +84,7 @@ The solver algorithm is simple:
   - Find a piece that is not on the board
   - Try to place that piece at all possible X,Y on the board
   - If the piece fits:
-    - If there are no blank spaces on the board, note the solution
+    - If there are no blank spaces on the board, note the solution and keep going
     - Call the solver algorithm recursively for the new board
 
 The python implementation of this algorithm takes 2.5 hours on my computer.
