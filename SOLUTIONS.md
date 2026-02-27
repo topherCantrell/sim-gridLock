@@ -1,4 +1,4 @@
-# The Game Cards
+# Solutions to the Game Cards
 
 Level 1 (green 01-22):
 
