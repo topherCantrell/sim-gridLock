@@ -1,15 +1,15 @@
 import pathlib
-from gridlock import resources
 from gridlock.board import Board
+from gridlock.pieces import PIECES
 
 class SVGBoard:
     def __init__(self, board):
         self.board = board
 
     def place_piece(self, letter, x, y):        
-        p = resources.PIECES[letter.upper()]
-        alt = letter.islower()
-        fnd = f"{p[1]}x{p[2]}"
+        p = PIECES[chr(letter).upper()]
+        alt = chr(letter).islower()
+        fnd = f"{p.width}x{p.height}"
         if alt:
             fnd += "_vert"
         i = self.board.find(f"<!-- {fnd}")
@@ -97,7 +97,7 @@ class SVGMaker:
             f.write(w)
 
     def render_board(self, board):
-        data = board.board
+        data = board.grid
         ret = self.make_board()
         placed = set()
         for i in range(64):
@@ -120,31 +120,31 @@ if __name__ == "__main__":
     # maker.make_svg('test.svg', [b1], 2, with_text=False)
 
 
-    b1 = Board()
-    b1.place_piece(resources.PIECES['A'], 0,0,False)
-    b1.place_piece(resources.PIECES['B'], 2,0,False)
-    b1.place_piece(resources.PIECES['C'], 5,0,False)
-    b1.place_piece(resources.PIECES['D'], 0,3,False)
-    b1.place_piece(resources.PIECES['E'], 0,6,False)
-    br1 = maker.render_board(b1)
+    # b1 = Board()
+    # b1.place_piece(resources.PIECES['A'], 0,0,False)
+    # b1.place_piece(resources.PIECES['B'], 2,0,False)
+    # b1.place_piece(resources.PIECES['C'], 5,0,False)
+    # b1.place_piece(resources.PIECES['D'], 0,3,False)
+    # b1.place_piece(resources.PIECES['E'], 0,6,False)
+    # br1 = maker.render_board(b1)
     
-    b2 = Board()
-    b2.place_piece(resources.PIECES['F'], 0,0,False)
-    b2.place_piece(resources.PIECES['G'], 5,0,False)
-    b2.place_piece(resources.PIECES['H'], 0,3,False)
-    b2.place_piece(resources.PIECES['I'], 0,6,False)
-    br2 = maker.render_board(b2)
+    # b2 = Board()
+    # b2.place_piece(resources.PIECES['F'], 0,0,False)
+    # b2.place_piece(resources.PIECES['G'], 5,0,False)
+    # b2.place_piece(resources.PIECES['H'], 0,3,False)
+    # b2.place_piece(resources.PIECES['I'], 0,6,False)
+    # br2 = maker.render_board(b2)
 
-    b3 = Board()
-    b3.place_piece(resources.PIECES['J'], 0,0,False)    
-    b3.place_piece(resources.PIECES['K'], 0,4,False) 
-    br3 = maker.render_board(b3)
-    maker.make_svg('pieces.svg', [br1, br2, br3], 2, with_text=False)
+    # b3 = Board()
+    # b3.place_piece(resources.PIECES['J'], 0,0,False)    
+    # b3.place_piece(resources.PIECES['K'], 0,4,False) 
+    # br3 = maker.render_board(b3)
+    # maker.make_svg('pieces.svg', [br1, br2, br3], 2, with_text=False)
 
 
     
     # card_boards = []
-    # for card in resources.CARDS[66:]:    
+    # for card in resources.CARDS[:22]:    
     #     board = resources.make_board(card)
     #     b = maker.render_board(board)
     #     b.set_text(f"{card[:2]}", "red")

@@ -10,15 +10,28 @@ var total_sols int = 0
 // Check if the board is a winning board (i.e. all pieces are on the board). If
 // it is, print the solution and increment the total_sols counter.
 // If a file is provided, write the solution to the file instead of printing it.
-func checkForWin(brd *Board, file *os.File) {
-	if brd.CountValue('.') == 0 {
-		total_sols += 1
-		if file != nil {
-			file.Write(brd[:])
-		} else {
-			fmt.Println("Found solution:")
-			brd.Print()
-		}
+// func checkForWin(brd *Board, file *os.File) {
+// 	if brd.CountValue('.') == 0 {
+// 		total_sols += 1
+// 		if file != nil {
+// 			file.Write(brd[:])
+// 		} else {
+// 			fmt.Println("Found solution:")
+// 			brd.Print()
+// 		}
+// 	}
+// }
+
+// Check if the board is a winning board (i.e. all pieces are on the board). If
+// it is, print the solution and increment the total_sols counter.
+// If a file is provided, write the solution to the file instead of printing it.
+func noteWin(brd *Board, file *os.File) {
+	total_sols += 1
+	if file != nil {
+		file.Write(brd[:])
+	} else {
+		fmt.Println("Found solution:")
+		brd.Print()
 	}
 }
 
@@ -44,6 +57,7 @@ func solve_recursive(brd *Board, file *os.File) {
 	}
 	if fnd < 0 {
 		// All pieces are on the board
+		noteWin(brd, file)
 		return
 	}
 	piece := Pieces[fnd]
@@ -59,7 +73,6 @@ func solve_recursive(brd *Board, file *os.File) {
 		for y := range 8 {
 			for x := range 8 {
 				if brd.PlacePiece(piece, x, y, rot == 1) {
-					checkForWin(brd, file)
 					solve_recursive(brd, file)
 				}
 				brd.RemovePiece(piece)

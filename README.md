@@ -1,3 +1,22 @@
+# At a Glance
+
+Here are the [solutions to all 88 cards.](SOLUTIONS.md)
+
+There are 1,977,968 ways to fit every piece on the board. Solutions come in groups
+of eight rotations. 1,977,968 / 8 = 247,246 rotationally-unique solutions.
+
+There are 583,864 ways to place pieces A, B, and C for starting a challenge. 583,864 / 8 =
+72,983 rotationally-unique starting points. Of these, only 13,967 starting positions
+are winnable.
+
+Out of 13,967 possible cards, the game only includes 88 start-positions cards. All of the 
+given start-positions have only 1 solution. There are 1,850 start-positions that have only 
+1 solution. Other start-positions have multiple solutions. (Two of the start-positions have 
+1,084 solutions.)
+
+There are four levels of challenges (22 cards in each level). I have yet to determine what
+makes one card harder than any other.
+
 # Rubik's Grid Lock
 
 The game board is a 8x8=64 cell grid. There are 11 pieces of various sizes that
@@ -33,7 +52,7 @@ form as shown.
 
 # Given Solutions
 
-The first board below is what ships with the game. The second solution is printed
+The first solution below is what ships with the game. The second solution is printed
 on the inside of the case.
 
 ![](art/given.svg)
@@ -114,6 +133,13 @@ impress your friends!
 
 All the cards are rotationally unique as checked by [gridlock/cards_checker.py](gridlock/cards_checker.py).
 
+It is easy to recover the starting board from a solution: just remove all pieces but A, B, and C and
+filter out duplicates. The 1,977,968 solutions reduce to 32,528 starting points -- starting cards.
+
+TODO: From here down
+
+TODO: Show a few of the non-winnable starting points
+
 TODO: Count the solutions for each card. Does this indicate the difficulty?
 
 TODO: knock off with rotated cards
@@ -122,7 +148,3 @@ What makes one card "harder" than another? Is it the number of solutions?
 
 How many possible cards are there? How many of those possible are solvable?
 
-Ignoring rotations:
-- How many possible cards are there?
-- How many winning/losing cards are there?
-- Are Jacob's cards the same as mine?

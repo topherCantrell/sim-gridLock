@@ -1,5 +1,6 @@
-from gridlock import resources
+from gridlock.board import Board
 
+print("Loading solutions from file...")
 with open('solutions.bin', 'rb') as f:
     solutions = {}
     while True:
@@ -27,26 +28,28 @@ for k, v in solutions.items():
     n += len(v)
 print(f'Loaded {n} solutions from file.')
 
-folded = {
-}
+folded = {}
+
+# There are 8 possible rotations for any board. We expect solutions to come in groups of 8 -- one
+# solution for each rotation. We check that here.
 
 print('Checking solutions for',len(solutions.items()))
 keys = list(solutions.keys())
 for hh in range(len(keys)):
     k = keys[hh]
     v = solutions[k]
+    # The total number of solutions must be a multiple of 8
     if(len(v) % 8 != 0):
         raise Exception(f'Invalid number of solutions for {k}')    
     boards = []
     for i in range(len(v)):
-        b = v[i]
-        boards.append([chr(c) for c in b])       
+        boards.append(Board(v[i]))
     for i in range(len(boards)):        
         stats = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0}
         for rots in range(8):
-            b = resources.rotate_board(boards[i], rots)                  
+            b = boards[i].rotate(rots)                  
             for j in boards:                
-                if j == b:
+                if j.grid == b.grid:
                     stats[rots] += 1                    
         for s in stats.values():
             if s != 1:
@@ -55,16 +58,19 @@ for hh in range(len(keys)):
     for j in boards:
         fnd = False
         for rots in range(8):
-            b = resources.rotate_board(j, rots)            
+            b = j.rotate(rots)            
             if b in folded[k]:
                 fnd = True
                 break
         if not fnd:
                 folded[k].append(b)
+    # For processing feedback
     print('>>>', hh, k, len(v), len(folded[k]))
             
 total_folded = 0
 for _, v in folded.items():
     total_folded += len(v)
-print('Total folded solutions:', total_folded)
 
+print(f'Loaded {n} solutions from file.')
+print('All solutions are grouped correctly into families of 8 rotations.')
+print(f'Total solution families: {total_folded}')
