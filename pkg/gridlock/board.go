@@ -61,15 +61,26 @@ func (b *Board) RotateInto(brd *Board, numRotations int) {
 	}
 }
 
-// Count the number of occurances of a value on the board
-func (b *Board) CountValue(val byte) int {
-	ret := 0
-	for _, v := range b {
-		if v == val {
-			ret += 1
+// Check if board has a piece with the given letter (case-insensitive)
+func (b *Board) HasPiece(letter byte) bool {
+	v1 := letter & (255 - 32) // Force upper case
+	v2 := letter | 32         // Force lower case
+	for _, c := range b {
+		if c == v1 || c == v2 {
+			return true
 		}
 	}
-	return ret
+	return false
+}
+
+// Check if the board has any empty spaces ('.')
+func (b *Board) HasEmpty() bool {
+	for _, c := range b {
+		if c == '.' {
+			return true
+		}
+	}
+	return false
 }
 
 // Place a piece on the board. Return "false" if the piece doesn't fit
@@ -112,9 +123,11 @@ func (b *Board) PlacePiece(p Piece, x int, y int, rot bool) bool {
 // Remove a piece from the board. This removes all of a piece (partial
 // or whole) from anywhere on the board.
 func (b *Board) RemovePiece(p Piece) {
+	v1 := p.Name & (255 - 32) // Force upper case
+	v2 := p.Name | 32         // Force lower case
 	for index, c := range b {
 		// Convert to uppercase for compare
-		if c&(255-32) == p.Name {
+		if c == v1 || c == v2 {
 			b[index] = '.'
 		}
 	}

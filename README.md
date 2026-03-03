@@ -1,5 +1,7 @@
 # At a Glance
 
+Here are the quick facts about gridlock. A detailed discussion follows this section.
+
 Here are the [solutions to all 88 cards.](SOLUTIONS.md)
 
 There are 1,977,968 ways to fit every piece on the board. Solutions come in groups
@@ -19,10 +21,12 @@ makes one card harder than any other.
 
 # Rubik's Grid Lock
 
-The game board is a 8x8=64 cell grid. There are 11 pieces of various sizes that
-are placed on the board. There are 88 cards showing a starting position with 3 
-pieces placed on the board. You must fit all the other pieces onto that starting 
-board.
+![](art/gridlock.jpg)
+
+The game board is an 8x8=64 cell grid. There are 11 pieces of various sizes that
+are placed on the board. There are 88 cards showing a starting position with the 
+same three placed on the board. You must fit all the other pieces onto that 
+starting board.
 
 Here are the 11 pieces. I assigned each piece a letter for discussion here and
 for modeling in the code:
@@ -52,8 +56,9 @@ form as shown.
 
 # Given Solutions
 
-The first solution below is what ships with the game. The second solution is printed
-on the inside of the case.
+When you unwrap the game for the first time, the pieces are arranged on the board
+in the first solution first solution below. The second solution is imprinted on 
+the inside of the case.
 
 ![](art/given.svg)
 
@@ -95,17 +100,17 @@ The 1x1 hole in the upper left can only be filled with the A piece, but the A
 piece is already placed on the board elsewhere.
 
 How many solvable cards are there? To answer that, we'll need code to solve
-a given board.
+a given starting board.
 
 # All Solutions
 
 The solver algorithm is simple:
   - Find a piece that is not on the board
   - Try to place that piece at all possible X,Y on the board
-  - If the piece fits:
-    - If there are no blank spaces on the board, note the solution
+  - If the piece fits at X,Y:
+    - If there are no blank spaces remaining on the board, note the solution
     - Call the solver algorithm recursively for the new board
-    - Keep going with this piece for other solutions
+    - Keep going with this piece for all possible X,Y
 
 The python implementation of this algorithm takes 2.5 hours on my computer.
 
@@ -114,9 +119,13 @@ pieces. The program appends each solution to a binary file for later processing.
 solution is 64 bytes (one byte per square on the grid).
 
 The code found 1,977,968 possible solutions. The solutions binary file is 64 times that
-or roughly 126M.
+or roughly 126M. This huge binary file is not checked into the repo.
 
 # Rotations and Mirroring
+
+TODO to here
+
+TODO talk about rotation/duplicate checker code
 
 When you find a solution, you can rotate the board four times to get a total of four
 solutions that are technically unique. You can also take a mirror image of the board
@@ -134,17 +143,26 @@ impress your friends!
 All the cards are rotationally unique as checked by [gridlock/cards_checker.py](gridlock/cards_checker.py).
 
 It is easy to recover the starting board from a solution: just remove all pieces but A, B, and C and
-filter out duplicates. The 1,977,968 solutions reduce to 32,528 starting points -- starting cards.
+filter out duplicates. The 1,977,968 solutions reduce to 32,528 starting points -- starting cards. When you
+remove rotations and duplicates.
 
 TODO: From here down
 
-TODO: Show a few of the non-winnable starting points
-
-TODO: Count the solutions for each card. Does this indicate the difficulty?
-
-TODO: knock off with rotated cards
-
-What makes one card "harder" than another? Is it the number of solutions?
-
 How many possible cards are there? How many of those possible are solvable?
 
+TODO: Show a few of the not-obvious non-winnable starting points
+
+TODO: Number of solutions for each card. Does this indicate the difficulty? What makes one card "harder" 
+than another?
+
+# All Possible Pieces
+
+![](art/possible-pieces.svg)
+
+A set of pieces must:
+  - equal the area of the board (64)
+  - have at least one solution
+
+TODO there are 28,725 sets of pieces that total 64
+
+TODO count the solutions for each piece set

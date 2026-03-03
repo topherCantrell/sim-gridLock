@@ -1,66 +1,23 @@
 package gridlock
 
-import (
-	"fmt"
-	"os"
-)
-
-var total_sols int = 0
-
-// Check if the board is a winning board (i.e. all pieces are on the board). If
-// it is, print the solution and increment the total_sols counter.
-// If a file is provided, write the solution to the file instead of printing it.
-// func checkForWin(brd *Board, file *os.File) {
-// 	if brd.CountValue('.') == 0 {
-// 		total_sols += 1
-// 		if file != nil {
-// 			file.Write(brd[:])
-// 		} else {
-// 			fmt.Println("Found solution:")
-// 			brd.Print()
-// 		}
-// 	}
-// }
-
-// Check if the board is a winning board (i.e. all pieces are on the board). If
-// it is, print the solution and increment the total_sols counter.
-// If a file is provided, write the solution to the file instead of printing it.
-func noteWin(brd *Board, file *os.File) {
-	total_sols += 1
-	if file != nil {
-		file.Write(brd[:])
-	} else {
-		fmt.Println("Found solution:")
-		brd.Print()
-	}
-}
-
-// Public interface to solve the board. Returns the total number of solutions found.
-// If a file is provided, writes the solutions to the file instead of printing them.
-func Solve(brd *Board, file *os.File) int {
-	total_sols = 0
-	solve_recursive(brd, file)
-	return total_sols
-}
-
-// Recursive helper function to run one piece from upper left to lower right
-// at both rotations.
-func solve_recursive(brd *Board, file *os.File) {
+// Place all remaining pieces on the board. Add any solutions found to the
+// given list of solutions.
+func Solve(brd *Board, allowed_pieces *[]Piece, retSolutions *[]Board) {
 
 	// Find the largest piece that isn't on the given board
 	fnd := -1
-	for i, p := range Pieces {
-		if brd.CountValue(p.Name) == 0 && brd.CountValue(p.Name|32) == 0 {
+	for i, p := range *allowed_pieces {
+		if !brd.HasPiece(p.Name) {
 			fnd = i
 			break
 		}
 	}
 	if fnd < 0 {
 		// All pieces are on the board
-		noteWin(brd, file)
+		*retSolutions = append(*retSolutions, *brd)
 		return
 	}
-	piece := Pieces[fnd]
+	piece := (*allowed_pieces)[fnd]
 
 	// Slide and rotate the piece over the board
 
@@ -73,7 +30,7 @@ func solve_recursive(brd *Board, file *os.File) {
 		for y := range 8 {
 			for x := range 8 {
 				if brd.PlacePiece(piece, x, y, rot == 1) {
-					solve_recursive(brd, file)
+					Solve(brd, allowed_pieces, retSolutions)
 				}
 				brd.RemovePiece(piece)
 			}

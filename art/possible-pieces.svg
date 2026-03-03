@@ -1,0 +1,152 @@
+<svg height="576" width="576" xmlns="http://www.w3.org/2000/svg">
+
+<g transform="translate(0,0) scale(1)">
+<polygon points="0,0 576,0 576,576 0,576" style="fill:#E0E0E0;stroke:black;stroke-width:0" />
+
+<!-- 1x1 A-->
+<polygon transform="translate(0,0)" points="1,1 15,1 15,15 1,15" style="fill:white;stroke:white;stroke-width:1" />
+<text x="6" y="12" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">A</text>
+
+<!-- 2x1 B-->
+<polygon transform="translate(16,0)" points="1,1 31,1 31,15 1,15" style="fill:white;stroke:white;stroke-width:1" />
+<text x="22" y="12" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">B</text>
+
+<!-- 3x1 C-->
+<polygon transform="translate(48,0)" points="1,1 47,1 47,15 1,15" style="fill:white;stroke:white;stroke-width:1" />
+<text x="54" y="12" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">C</text>
+
+<!-- 4x1 D-->
+<polygon transform="translate(96,0)" points="1,1 63,1 63,15 1,15" style="fill:green;stroke:green;stroke-width:1" />
+<text x="102" y="12" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">D</text>
+
+<!-- 5x1 E-->
+<polygon transform="translate(160,0)" points="1,1 79,1 79,15 1,15" style="fill:green;stroke:green;stroke-width:1" />
+<text x="166" y="12" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">E</text>
+
+<!-- 6x1 O-->
+<polygon transform="translate(240,0)" points="1,1 95,1 95,15 1,15" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="246" y="12" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">O</text>
+
+<!-- 7x1 P-->
+<polygon transform="translate(336,0)" points="1,1 111,1 111,15 1,15" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="342" y="12" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">P</text>
+
+<!-- 8x1 Q-->
+<polygon transform="translate(448,0)" points="1,1 127,1 127,15 1,15" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="454" y="12" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">Q</text>
+
+<!-- 2x2 F-->
+<polygon transform="translate(16,16)" points="1,1 31,1 31,31 1,31" style="fill:red;stroke:red;stroke-width:1" />
+<text x="22" y="26" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">F</text>
+
+<!-- 3x2 G-->
+<polygon transform="translate(48,16)" points="1,1 47,1 47,31 1,31" style="fill:blue;stroke:blue;stroke-width:1" />
+<text x="54" y="26" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">G</text>
+
+<!-- 4x2 H-->
+<polygon transform="translate(96,16)" points="1,1 63,1 63,31 1,31" style="fill:blue;stroke:blue;stroke-width:1" />
+<text x="102" y="26" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">H</text>
+
+<!-- 5x2 I-->
+<polygon transform="translate(160,16)" points="1,1 79,1 79,31 1,31" style="fill:blue;stroke:blue;stroke-width:1" />
+<text x="166" y="26" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">I</text>
+
+<!-- 6x2 L-->
+<polygon transform="translate(240,16)" points="1,1 95,1 95,31 1,31" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="246" y="26" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">L</text>
+
+<!-- 7x2 M-->
+<polygon transform="translate(336,16)" points="1,1 111,1 111,31 1,31" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="342" y="26" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">M</text>
+
+<!-- 8x2 N-->
+<polygon transform="translate(448,16)" points="1,1 127,1 127,31 1,31" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="454" y="26" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">N</text>
+
+<!-- 3x3 J-->
+<polygon transform="translate(48,48)" points="1,1 47,1 47,47 1,47" style="fill:orange;stroke:orange;stroke-width:1" />
+<text x="54" y="62" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">J</text>
+
+<!-- 4x3 K-->
+<polygon transform="translate(96,48)" points="1,1 63,1 63,47 1,47" style="fill:yellow;stroke:yellow;stroke-width:1" />
+<text x="102" y="62" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">K</text>
+
+<!-- 5x3 R-->
+<polygon transform="translate(160,48)" points="1,1 79,1 79,47 1,47" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="166" y="62" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">R</text>
+
+<!-- 6x3 S-->
+<polygon transform="translate(240,48)" points="1,1 95,1 95,47 1,47" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="246" y="62" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">S</text>
+
+<!-- 7x3 T-->
+<polygon transform="translate(336,48)" points="1,1 111,1 111,47 1,47" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="342" y="62" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">T</text>
+
+<!-- 8x3 U-->
+<polygon transform="translate(448,48)" points="1,1 127,1 127,47 1,47" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="454" y="62" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">U</text>
+
+<!-- 4x4 V-->
+<polygon transform="translate(96,96)" points="1,1 63,1 63,63 1,63" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="102" y="112" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">V</text>
+
+<!-- 5x4 W-->
+<polygon transform="translate(160,96)" points="1,1 79,1 79,63 1,63" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="166" y="112" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">W</text>
+
+<!-- 6x4 X-->
+<polygon transform="translate(240,96)" points="1,1 95,1 95,63 1,63" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="246" y="112" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">X</text>
+
+<!-- 7x4 Y-->
+<polygon transform="translate(336,96)" points="1,1 111,1 111,63 1,63" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="342" y="112" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">Y</text>
+
+<!-- 8x4 Z-->
+<polygon transform="translate(448,96)" points="1,1 127,1 127,63 1,63" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="454" y="112" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">Z</text>
+
+<!-- 5x5 0-->
+<polygon transform="translate(160,160)" points="1,1 79,1 79,79 1,79" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="166" y="176" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">0</text>
+
+<!-- 6x5 1-->
+<polygon transform="translate(240,160)" points="1,1 95,1 95,79 1,79" style="fill:#808080;stroke:#808080;stroke-width:1" /> -->
+<text x="246" y="176" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">1</text>
+
+<!-- 7x5 2-->
+<polygon transform="translate(336,160)" points="1,1 111,1 111,79 1,79" style="fill:#808080;stroke:#808080;stroke-width:1" /> -->
+<text x="342" y="176" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">2</text>
+
+<!-- 8x5 3-->
+<polygon transform="translate(448,160)" points="1,1 127,1 127,79 1,79" style="fill:#808080;stroke:#808080;stroke-width:1" /> -->
+<text x="454" y="176" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">3</text>
+
+<!-- 6x6 4-->
+<polygon transform="translate(240,240)" points="1,1 95,1 95,95 1,95" style="fill:#808080;stroke:#808080;stroke-width:1" /> -->
+<text x="246" y="256" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">4</text>
+
+<!-- 7x6 5-->
+<polygon transform="translate(336,240)" points="1,1 111,1 111,95 1,95" style="fill:#808080;stroke:#808080;stroke-width:1" /> -->
+<text x="342" y="256" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">5</text>
+
+<!-- 8x6 6-->
+<polygon transform="translate(448,240)" points="1,1 127,1 127,95 1,95" style="fill:#808080;stroke:#808080;stroke-width:1" /> -->
+<text x="454" y="256" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">6</text>
+
+<!-- 7x7 7-->
+<polygon transform="translate(336,336)" points="1,1 111,1 111,111 1,111" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="342" y="352" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">7</text>
+
+<!-- 8x7 8-->
+<polygon transform="translate(448,336)" points="1,1 127,1 127,111 1,111" style="fill:#808080;stroke:#808080;stroke-width:1" />
+<text x="454" y="352" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">8</text>
+
+<!-- 8x8 9-->
+<polygon transform="translate(448,448)" points="1,1 127,1 127,127 1,127" style="fill:#808080;stroke:#808080;stroke-width:1" /> -->
+<text x="454" y="464" font-family="Verdana" font-size="10" fill="black" style="text-anchor:middle">9</text>
+
+</g>
+
+</svg>

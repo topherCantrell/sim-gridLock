@@ -35,12 +35,21 @@ func main() {
 	}
 	lines := strings.Split(string(input), "\n")
 
-	// Create a starting board from the input file
+	// Create a starting board (and pieces) from the input file
 	brd := gridlock.CreateBoard()
 	pos := 0
+	givenPieces := make([]gridlock.Piece, 0)
 	for _, line := range lines {
 		line = strings.TrimSpace(line)
 		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
+		if strings.HasPrefix(line, ">") {
+			letter := line[1]
+			width := int(line[3] - '0')
+			height := int(line[5] - '0')
+			color := line[7:]
+			givenPieces = append(givenPieces, gridlock.Piece{Name: letter, Width: width, Height: height, Color: color})
 			continue
 		}
 		for _, c := range line {
@@ -49,21 +58,43 @@ func main() {
 		}
 	}
 
+	// Find all solutions from the given starting point
+	fmt.Println("Solving Board:")
+	brd.Print()
+	solutions := make([]gridlock.Board, 0)
+	if len(givenPieces) > 0 {
+		fmt.Println("Given pieces: ")
+		for _, piece := range givenPieces {
+			fmt.Printf("%c: %dx%d %s\n", piece.Name, piece.Width, piece.Height, piece.Color)
+		}
+		gridlock.Solve(&brd, &givenPieces, &solutions)
+	} else {
+		gridlock.Solve(&brd, &gridlock.Pieces, &solutions)
+	}
+
 	// Create the output file if it was provided
 	var file *os.File = nil
-	if outputFile != "" {
+	if outputFile == "" {
+		for _, solution := range solutions {
+			fmt.Println("Solution:")
+			solution.Print()
+		}
+	} else {
 		file, err = os.Create(outputFile)
 		if err != nil {
 			fmt.Println("Error creating output file: ", err)
 			return
 		}
 		defer file.Close()
+		for _, solution := range solutions {
+			_, err = file.Write(solution[:])
+			if err != nil {
+				fmt.Println("Error writing to output file: ", err)
+				return
+			}
+		}
 	}
 
-	// Find all solutions from the given starting point
-	fmt.Println("Solving Board:")
-	brd.Print()
-	total := gridlock.Solve(&brd, file)
-	fmt.Println("Total solutions found: ", total)
+	fmt.Println("Total solutions found: ", len(solutions))
 
 }

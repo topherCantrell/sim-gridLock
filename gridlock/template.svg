@@ -116,6 +116,124 @@
 <polygon transform="translate(0,0)" points="1,1 63,1 63,47 1,47" style="fill:yellow;stroke:yellow;stroke-width:1" /> -->
 <!-- 4x3_vert K
 <polygon transform="translate(0,0)" points="1,1 1,63 47,63 47,1" style="fill:yellow;stroke:yellow;stroke-width:1" /> -->
+
+<!-- possible pieces not in game -->
+
+<!-- 6x2 L
+<polygon transform="translate(0,0)" points="1,1 95,1 95,31 1,31" style="fill:purple;stroke:purple;stroke-width:1" /> -->
+<!-- 6x2_vert L
+<polygon transform="translate(0,0)" points="1,1 1,95 31,95 31,1" style="fill:purple;stroke:purple;stroke-width:1" /> -->
+
+<!-- 7x2 M
+<polygon transform="translate(0,0)" points="1,1 111,1 111,31 1,31" style="fill:purple;stroke:purple;stroke-width:1" /> -->
+<!-- 7x2_vert M
+<polygon transform="translate(0,0)" points="1,1 1,111 31,111 31,1" style="fill:purple;stroke:purple;stroke-width:1" /> -->
+
+<!-- 8x2 N
+<polygon transform="translate(0,0)" points="1,1 127,1 127,31 1,31" style="fill:purple;stroke:purple;stroke-width:1" /> -->
+<!-- 8x2_vert N
+<polygon transform="translate(0,0)" points="1,1 1,127 31,127 31,1" style="fill:purple;stroke:purple;stroke-width:1" /> -->
+
+<!-- 6x1 O
+<polygon transform="translate(0,0)" points="1,1 95,1 95,15 1,15" style="fill:cyan;stroke:cyan;stroke-width:1" /> -->
+<!-- 6x1_vert O
+<polygon transform="translate(0,0)" points="1,1 1,95 15,95 15,1" style="fill:cyan;stroke:cyan;stroke-width:1" /> -->
+
+<!-- 7x1 P
+<polygon transform="translate(0,0)" points="1,1 111,1 111,15 1,15" style="fill:cyan;stroke:cyan;stroke-width:1" /> -->
+<!-- 7x1_vert P
+<polygon transform="translate(0,0)" points="1,1 1,111 15,111 15,1" style="fill:cyan;stroke:cyan;stroke-width:1" /> -->
+
+<!-- 8x1 Q
+<polygon transform="translate(0,0)" points="1,1 127,1 127,15 1,15" style="fill:cyan;stroke:cyan;stroke-width:1" /> -->
+<!-- 8x1_vert Q
+<polygon transform="translate(0,0)" points="1,1 1,127 15,127 15,1" style="fill:cyan;stroke:cyan;stroke-width:1" /> -->
+
+<!-- 5x3 R
+<polygon transform="translate(0,0)" points="1,1 79,1 79,47 1,47" style="fill:gold;stroke:gold;stroke-width:1" /> -->
+<!-- 5x3_vert R
+<polygon transform="translate(0,0)" points="1,1 1,79 47,79 47,1" style="fill:gold;stroke:gold;stroke-width:1" /> -->
+
+<!-- 6x3 S
+<polygon transform="translate(0,0)" points="1,1 95,1 95,47 1,47" style="fill:gold;stroke:gold;stroke-width:1" /> -->
+<!-- 6x3_vert S
+<polygon transform="translate(0,0)" points="1,1 1,95 47,95 47,1" style="fill:gold;stroke:gold;stroke-width:1" /> -->
+
+<!-- 7x3 T
+<polygon transform="translate(0,0)" points="1,1 111,1 111,47 1,47" style="fill:gold;stroke:gold;stroke-width:1" /> -->
+<!-- 7x3_vert T
+<polygon transform="translate(0,0)" points="1,1 1,111 47,111 47,1" style="fill:gold;stroke:gold;stroke-width:1" /> -->
+
+<!-- 8x3 U
+<polygon transform="translate(0,0)" points="1,1 127,1 127,47 1,47" style="fill:gold;stroke:gold;stroke-width:1" /> -->
+<!-- 8x3_vert U
+<polygon transform="translate(0,0)" points="1,1 1,127 47,127 47,1" style="fill:gold;stroke:gold;stroke-width:1" /> -->
+
+<!-- 4x4 V
+<polygon transform="translate(0,0)" points="1,1 63,1 63,63 1,63" style="fill:pink;stroke:pink;stroke-width:1" /> -->
+
+<!-- 5x4 W
+<polygon transform="translate(0,0)" points="1,1 79,1 79,63 1,63" style="fill:pink;stroke:pink;stroke-width:1" /> -->
+<!-- 5x4_vert W
+<polygon transform="translate(0,0)" points="1,1 1,79 63,79 63,1" style="fill:pink;stroke:pink;stroke-width:1" /> -->
+
+<!-- 6x4 X
+<polygon transform="translate(0,0)" points="1,1 95,1 95,63 1,63" style="fill:pink;stroke:pink;stroke-width:1" /> -->
+<!-- 6x4_vert X
+<polygon transform="translate(0,0)" points="1,1 1,95 63,95 63,1" style="fill:pink;stroke:pink;stroke-width:1" /> -->
+
+<!-- 7x4 Y
+<polygon transform="translate(0,0)" points="1,1 111,1 111,63 1,63" style="fill:pink;stroke:pink;stroke-width:1" /> -->
+<!-- 7x4_vert Y
+<polygon transform="translate(0,0)" points="1,1 1,111 63,111 63,1" style="fill:pink;stroke:pink;stroke-width:1" /> -->
+
+<!-- 8x4 Z
+<polygon transform="translate(0,0)" points="1,1 127,1 127,63 1,63" style="fill:pink;stroke:pink;stroke-width:1" /> -->
+<!-- 8x4_vert Z
+<polygon transform="translate(0,0)" points="1,1 1,127 63,127 63,1" style="fill:pink;stroke:pink;stroke-width:1" /> -->
+
+<!-- 5x5 0
+<polygon transform="translate(0,0)" points="1,1 79,1 79,79 1,79" style="fill:brown;stroke:brown;stroke-width:1" /> -->
+
+<!-- 6x5 1
+<polygon transform="translate(0,0)" points="1,1 95,1 95,79 1,79" style="fill:brown;stroke:brown;stroke-width:1" /> -->
+<!-- 6x5_vert 1
+<polygon transform="translate(0,0)" points="1,1 1,95 79,95 79,1" style="fill:brown;stroke:brown;stroke-width:1" /> -->
+
+<!-- 7x5 2
+<polygon transform="translate(0,0)" points="1,1 111,1 111,79 1,79" style="fill:brown;stroke:brown;stroke-width:1" /> -->
+<!-- 7x5_vert 2
+<polygon transform="translate(0,0)" points="1,1 1,111 79,111 79,1" style="fill:brown;stroke:brown;stroke-width:1" /> -->
+
+<!-- 8x5 3
+<polygon transform="translate(0,0)" points="1,1 127,1 127,79 1,79" style="fill:brown;stroke:brown;stroke-width:1" /> -->
+<!-- 8x5_vert 3
+<polygon transform="translate(0,0)" points="1,1 1,127 79,127 79,1" style="fill:brown;stroke:brown;stroke-width:1" /> -->
+
+<!-- 6x6 4
+<polygon transform="translate(0,0)" points="1,1 95,1 95,95 1,95" style="fill:magenta;stroke:magenta;stroke-width:1" /> -->
+
+<!-- 7x6 5
+<polygon transform="translate(0,0)" points="1,1 111,1 111,95 1,95" style="fill:magenta;stroke:magenta;stroke-width:1" /> -->
+<!-- 7x6_vert 5
+<polygon transform="translate(0,0)" points="1,1 1,111 95,111 95,1" style="fill:magenta;stroke:magenta;stroke-width:1" /> -->
+
+<!-- 8x6 6
+<polygon transform="translate(0,0)" points="1,1 127,1 127,95 1,95" style="fill:magenta;stroke:magenta;stroke-width:1" /> -->
+<!-- 8x6_vert 6
+<polygon transform="translate(0,0)" points="1,1 1,127 95,127 95,1" style="fill:magenta;stroke:magenta;stroke-width:1" /> -->
+
+<!-- 7x7 7
+<polygon transform="translate(0,0)" points="1,1 111,1 111,111 1,111" style="fill:coral;stroke:coral;stroke-width:1" /> -->
+
+<!-- 8x7 8
+<polygon transform="translate(0,0)" points="1,1 127,1 127,111 1,111" style="fill:coral;stroke:coral;stroke-width:1" /> -->
+<!-- 8x7_vert 8
+<polygon transform="translate(0,0)" points="1,1 1,127 111,127 111,1" style="fill:coral;stroke:coral;stroke-width:1" /> -->
+
+<!-- 8x8 9
+<polygon transform="translate(0,0)" points="1,1 127,1 127,127 1,127" style="fill:teal;stroke:teal;stroke-width:1" /> -->
+
 </g>
 <!-- COPY_END -->
 
