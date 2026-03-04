@@ -19,6 +19,13 @@ given start-positions have only 1 solution. There are 1,850 start-positions that
 There are four levels of challenges (22 cards in each level). I have yet to determine what
 makes one card harder than any other.
 
+The game ships with 11 pieces, but there are 36 total [possible unique pieces](art/possible-pieces.svg) 
+for an 8x8 board.
+
+These 36 pieces can be grouped into 28,725 sets of pieces whose areas total 64 (the board's 
+area). But only ??? of these sets have solutions. Many sets like ??? have just 8 solutions (1 
+family of solutions). Set ??? has ??? the most solutions: ???.
+
 # Rubik's Grid Lock
 
 ![](art/gridlock.jpg)
