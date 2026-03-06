@@ -6,20 +6,6 @@ class Piece:
         self.height = height
         self.color = color
 
-PIECES = {
-    'K': Piece('K', 4,3,'yellow'),
-    'J': Piece('J', 3,3,'orange'),
-    'I': Piece('I', 5,2,'blue'),
-    'H': Piece('H', 4,2,'blue'),
-    'G': Piece('G', 3,2,'blue'),
-    'F': Piece('F', 2,2,'red'),
-    'E': Piece('E', 5,1,'green'),
-    'D': Piece('D', 4,1,'green'),
-    'C': Piece('C', 3,1,'white'),
-    'B': Piece('B', 2,1,'white'),
-    'A': Piece('A', 1,1,'white'),
-}
-
 OTHER_PIECES = {
     '9': Piece('9', 8, 8, 'teal'),
     '8': Piece('8', 8, 7, 'coral'),
@@ -39,11 +25,26 @@ OTHER_PIECES = {
     'U': Piece('U', 8, 3, 'gold'),
     'T': Piece('T', 7, 3, 'gold'),
     'S': Piece('S', 6, 3, 'gold'),
-    'R': Piece('R', 5, 3, 'gold'),
-    'Q': Piece('Q', 8, 1, 'cyan'),
-    'P': Piece('P', 7, 1, 'cyan'),
-    'O': Piece('O', 6, 1, 'cyan'),
-    'N': Piece('N', 8, 2, 'purple'),
-    'M': Piece('M', 7, 2, 'purple'),
-    'L': Piece('L', 6, 2, 'purple'),
+    'R': Piece('R', 5, 3, 'gold'),    
+    'Q': Piece('N', 8, 2, 'purple'),
+    'P': Piece('M', 7, 2, 'purple'),
+    'O': Piece('L', 6, 2, 'purple'),
+    'N': Piece('Q', 8, 1, 'cyan'),
+    'M': Piece('P', 7, 1, 'cyan'),
+    'L': Piece('O', 6, 1, 'cyan'),
 }
+
+PIECES = {
+    'K': Piece('K', 4,3,'yellow'),
+    'J': Piece('J', 3,3,'orange'),
+    'I': Piece('I', 5,2,'blue'),
+    'H': Piece('H', 4,2,'blue'),
+    'G': Piece('G', 3,2,'blue'),
+    'F': Piece('F', 2,2,'red'),
+    'E': Piece('E', 5,1,'green'),
+    'D': Piece('D', 4,1,'green'),
+    'C': Piece('C', 3,1,'white'),
+    'B': Piece('B', 2,1,'white'),
+    'A': Piece('A', 1,1,'white'),
+}
+

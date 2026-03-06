@@ -2,7 +2,6 @@ package gridlock
 
 import (
 	"fmt"
-	"slices"
 )
 
 // The gridlock game board
@@ -46,14 +45,6 @@ func (b *Board) RotateInto(brd *Board, numRotations int) {
 		for y := range 8 {
 			for x := range 8 {
 				c := scratchBoard[(7-x)*8+y]
-				// Switch the case of the letter, except for A, F, and J which are symmetrical
-				if c != 'A' && c != 'F' && c != 'J' {
-					if c >= 'a' {
-						c = c & (255 - 32) // Force upper case
-					} else {
-						c = c | 32 // Force lower case
-					}
-				}
 				brd[y*8+x] = c
 			}
 		}
@@ -63,10 +54,8 @@ func (b *Board) RotateInto(brd *Board, numRotations int) {
 
 // Check if board has a piece with the given letter (case-insensitive)
 func (b *Board) HasPiece(letter byte) bool {
-	v1 := letter & (255 - 32) // Force upper case
-	v2 := letter | 32         // Force lower case
 	for _, c := range b {
-		if c == v1 || c == v2 {
+		if c == letter {
 			return true
 		}
 	}
@@ -95,7 +84,6 @@ func (b *Board) PlacePiece(p Piece, x int, y int, rot bool) bool {
 	if rot {
 		// If this is rotated, swap the dimensions
 		height, width = width, height
-		letter = letter | 32 // Make it lowercase
 	}
 	// Place the grid of letters -- stop on first conflict
 	for j := 0; j < height; j++ {
@@ -123,27 +111,13 @@ func (b *Board) PlacePiece(p Piece, x int, y int, rot bool) bool {
 // Remove a piece from the board. This removes all of a piece (partial
 // or whole) from anywhere on the board.
 func (b *Board) RemovePiece(p Piece) {
-	v1 := p.Name & (255 - 32) // Force upper case
-	v2 := p.Name | 32         // Force lower case
+	v1 := p.Name
 	for index, c := range b {
 		// Convert to uppercase for compare
-		if c == v1 || c == v2 {
+		if c == v1 {
 			b[index] = '.'
 		}
 	}
-}
-
-// Make a compact (11 character) representation of the solved board
-func (b *Board) CompactSolution() string {
-	usedLetters := []byte{}
-	ret := []byte{}
-	for _, c := range b {
-		if !slices.Contains(usedLetters, c) {
-			ret = append(ret, c)
-			usedLetters = append(usedLetters, c)
-		}
-	}
-	return string(ret)
 }
 
 // Print a simple ASCII representation of a board
