@@ -1,0 +1,9 @@
+# Thest out the solver on a 3x3 board
+
+>F:2x2 blue
+>C:3x1 white
+>B:2x1 red
+
+...
+...
+...

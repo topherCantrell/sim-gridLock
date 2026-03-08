@@ -5,7 +5,7 @@ var JustOneSolution Board
 
 func CountSolve(brd *Board, allowed_pieces *[]Piece) (int, Board) {
 	TotalCount = 0
-	JustOneSolution = CreateBoard()
+	JustOneSolution = CreateBoard(brd.Width, brd.Height)
 	countSolutionsRecursive(brd, allowed_pieces)
 	return TotalCount, JustOneSolution
 }
@@ -26,9 +26,9 @@ func countSolutionsRecursive(brd *Board, allowed_pieces *[]Piece) {
 		// All pieces are on the board
 		TotalCount++
 		if TotalCount == 1 {
-			JustOneSolution = *brd
+			copy(JustOneSolution.Cells, brd.Cells)
 		}
-		for _, p := range *brd {
+		for _, p := range (*brd).Cells {
 			if p == '.' {
 				panic("Invalid solution: empty space found")
 			}
@@ -45,8 +45,8 @@ func countSolutionsRecursive(brd *Board, allowed_pieces *[]Piece) {
 			// can save time by skipping rotations on a square piece.
 			continue
 		}
-		for y := range 8 {
-			for x := range 8 {
+		for y := range brd.Height {
+			for x := range brd.Width {
 				if brd.PlacePiece(piece, x, y, rot == 1) {
 					countSolutionsRecursive(brd, allowed_pieces)
 				}
@@ -70,7 +70,9 @@ func Solve(brd *Board, allowed_pieces *[]Piece, retSolutions *[]Board) {
 	}
 	if fnd < 0 {
 		// All pieces are on the board
-		*retSolutions = append(*retSolutions, *brd)
+		nb := CreateBoard(brd.Width, brd.Height)
+		copy(nb.Cells, brd.Cells)
+		*retSolutions = append(*retSolutions, nb)
 		return
 	}
 	piece := (*allowed_pieces)[fnd]
@@ -83,8 +85,8 @@ func Solve(brd *Board, allowed_pieces *[]Piece, retSolutions *[]Board) {
 			// can save time by skipping rotations on a square piece.
 			continue
 		}
-		for y := range 8 {
-			for x := range 8 {
+		for y := range brd.Height {
+			for x := range brd.Width {
 				if brd.PlacePiece(piece, x, y, rot == 1) {
 					Solve(brd, allowed_pieces, retSolutions)
 				}

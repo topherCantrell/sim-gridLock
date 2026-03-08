@@ -1,44 +1,35 @@
 # At a Glance
 
-Here are the quick facts about gridlock. A detailed discussion follows this section.
+Here are some quick facts about the "Rubik's Grid Lock" universe. A detailed discussion follows.
 
 Here are the [solutions to all 88 cards.](SOLUTIONS.md)
 
 There are 1,977,968 ways to fit every piece on the board. Solutions come in groups
-of eight rotations. 1,977,968 / 8 = 247,246 rotationally-unique solutions.
+of eight rotations (see discussion). 1,977,968 / 8 = 247,246 rotationally-unique solutions.
 
-There are 583,864 ways to place pieces A, B, and C for starting a challenge. 583,864 / 8 =
+There are 583,864 ways to place pieces A, B, and C to start a challenge. 583,864 / 8 =
 72,983 rotationally-unique starting points. Of these, only 13,967 starting positions
 are winnable.
 
-Out of 13,967 possible cards, the game only includes 88 start-positions cards. All of the 
-given start-positions have only 1 solution. There are 1,850 start-positions that have only 
-1 solution. Other start-positions have multiple solutions. (Two of the start-positions have 
-1,084 solutions.)
+Out of 13,967 possible start-position cards, the game only includes 88. All of the given cards have exactly 1 solution. There are 1,850 cards that have exactly 1 solution. Many cards have multiple solutions. (Two of the cards have 1,084 solutions.)
 
-There are four levels of challenges (22 cards in each level). I have yet to determine what
-makes one card harder than any other.
+There are four levels of challenges (22 cards in each level). I have yet to determine what makes one card harder than any other.
 
-The game ships with 11 pieces, but there are 36 total [possible unique pieces](art/possible-pieces.svg) 
-for an 8x8 board.
+The game ships with 11 pieces, but there are 36 [possible unique pieces](art/possible-pieces.svg) for an 8x8 board.
 
-These 36 pieces can be grouped into 28,725 sets of pieces whose areas total 64 (the board's 
-area). But only 17,385 of these sets have solutions. Many sets like WVLJFECA have just 8 solutions (1 
-family of solutions). Set NMLIHGFEDCBA has the most pieces (12) and the most solutions (5,324,896).
+These 36 pieces can be grouped into 28,725 sets of pieces whose areas total 64 (the board's area). But only 17,385 of these sets have solutions. Many sets like WVLJFECA have just 8 solutions (1 family of solutions). Set NMLIHGFEDCBA has the most pieces (12) and the most solutions (5,324,896).
 
-There are lots of sets with 11 pieces, but the given set ABCDEFGHIJK has the 2nd most solution (1,977,968).
+There are lots of sets with 11 pieces, but the given set ABCDEFGHIJK has the 2nd most solutions: 1,977,968.
+
+There are other possible board dimensions. For instance, a 5x3 board has 18 winnable sets of pieces. The set ABCDE has the most solutions of any set, with 40. Set GFCB is in second place with 32.
 
 # Rubik's Grid Lock
 
 ![](art/gridlock.jpg)
 
-The game board is an 8x8=64 cell grid. There are 11 pieces of various sizes that
-are placed on the board. There are 88 cards showing a starting position with the 
-same three placed on the board. You must fit all the other pieces onto that 
-starting board.
+The game board is an 8x8=64 cell grid. There are 11 unique pieces of various sizes that are placed on the board. There are 88 challenge cards. Each card shows the starting board with  A, B, and C placed on the board. You must fit all the other pieces onto that starting board.
 
-Here are the 11 pieces. I assigned each piece a letter for discussion here and
-for modeling in the code:
+Here are the 11 pieces. I assigned each piece a letter for discussion here and for modeling in the code:
 
 <!-- SVG pieces
 A.BB.CCC EE...FFF JJJ.....
@@ -52,16 +43,11 @@ EEEEE... HHHHH... KKKKK...
 -->
 ![](art/pieces.svg)
 
-The first 3 pieces -- A, B, and C -- are the "fixed" pieces shown on the 88
-cards. Every card shows the position of these three pieces and no other piece.
+The first 3 pieces -- A, B, and C -- are the "fixed" pieces shown on the 88 cards. Every card shows the position of these three pieces and no other piece.
 
-There are 5 pieces with a height of 1 cell: A, B, C, D, and E. There are 4
-pieces with a height of 2 cells: F, G, H, and I. And there are 2 pieces
-with a height of 3 cells: J and K.
+There are 5 pieces with a height of 1 cell: A, B, C, D, and E. There are 4 pieces that are 2 cells high: F, G, H, and I. And there are 2 pieces, J and K, that are 3 cells high.
 
-8 of the pieces have 2 forms: the one shown in the picture above and one that
-is rotated 90 degrees. The pieces A, F, and J are square; they have only one 
-form as shown.
+8 of the pieces have 2 forms: the one shown in the picture above and another rotated 90 degrees. The pieces A, F, and J are square; they have only one form as shown.
 
 # Given Solutions
 
@@ -71,45 +57,25 @@ the inside of the case.
 
 ![](art/given.svg)
 
-# Cards
+# Challenge Cards
 
 There are 88 cards. See the complete list here: [all cards](CARDS.md)
 
-There are four levels of 22 cards each from easy to hard. Here is
-one card from each difficulty level:
+There are four levels of 22 cards each, from easy to hard. Here is one card from each difficulty level:
 
 ![](art/card_samples.svg)
 
-All the cards use pieces A, B, and C. There are more than 88 combinations
-of pieces A, B, and C -- more than 88 starting boards. The A piece has
-64 possible positions. The B piece has 7x8x2 = 112 positions (remember the
-rotations). The C piece has 6x8x2 = 96 positions. If we allow overlaps, we
-have 64x112x96 = 688,128 as an upper limit estimate of the nummber of possible
-cards. But we don't allow overlaps. 
+All the cards use pieces A, B, and C. Is this all the possible cards? If not, how many are there?
 
-The code in [gridlock/possible_cards.py](gridlock/possible_cards.py) generates
-all legal combinations (no overlaps) of pieces A, B, C. There are 583,864
-possible starting points -- possible cards.
+It is easy to find an unsolvable starting position. You create a 1x1 hole and put the 1x1 piece elsewhere on the board. For instance:
 
-Not all these starting configurations are solvable. Take for instance:
-
-<!-- SVG unsolvable
-.BB.....
-CCC.A...
-........
-........
-........
-........
-........
-........
--->
 ![](art/unsolvable.svg)
 
-The 1x1 hole in the upper left can only be filled with the A piece, but the A
-piece is already placed on the board elsewhere.
+The example proves that there are more than 88 possible starting positions and that not all are solvable.
 
-How many solvable cards are there? To answer that, we'll need code to solve
-a given starting board.
+The A piece has 64 possible positions (each square on the board). The B piece has 7x8x2 = 112 possible positions (remember the rotations). The C piece has 6x8x2 = 96 positions. If we allow the pieces to overlap, we have 64x112x96 = 688,128 as an upper bound on the number of possible cards. But we don't allow overlaps.
+
+The code in [gridlock/possible_cards.py] generates all legal combinations (no overlaps) of pieces A, B, and C. There are 583, 864 possible starting points – possible cards. To figure out how many of these are solvable, we'll need code to solve a board.
 
 # All Solutions
 
@@ -119,16 +85,12 @@ The solver algorithm is simple:
   - If the piece fits at X,Y:
     - If there are no blank spaces remaining on the board, note the solution
     - Call the solver algorithm recursively for the new board
-    - Keep going with this piece for all possible X,Y
+  - If the piece fits or doesn't fit: keep going with this piece for all possible X,Y
+  - Repeat for all pieces on the board
 
-The python implementation of this algorithm takes 2.5 hours on my computer.
+I wrote the solver in Go for performance: [cmd/solver/main.go]. The program takes an input text file that gives the starting board and the list of possible pieces.
 
-The golang implementation takes just over 1 minute to try all possible combinations of 
-pieces. The program appends each solution to a binary file for later processing. Each 
-solution is 64 bytes (one byte per square on the grid).
-
-The code found 1,977,968 possible solutions. The solutions binary file is 64 times that
-or roughly 126M. This huge binary file is not checked into the repo.
+I ran the program with a blank starting board and the 11 given pieces to find all possible solutions. It took just under a minute to find all 1,977,968 possible solutions to the game. The program writes the solutions to a binary file for later processing. This 126M binary file is NOT checked into the repo.
 
 # Rotations and Mirroring
 
@@ -225,3 +187,22 @@ TODO count the solutions for each piece set
 ('3U',  4, '3333333333333333333333333333333333333333UUUUUUUUUUUUUUUUUUUUUUUU')
 ('9',   1, '9999999999999999999999999999999999999999999999999999999999999999')
 ```
+
+# TODO different size boards
+
+The set-solver program takes the dimensions of the board and allowed pieces as arguments.
+
+a 5x3 board has 18 winnable sets of pieces. The set ABCDE has the most solutions of any set, with 40. Set GFCB is in second place with 32.
+
+2x2 board -- just the one soltuion wiht the 2x2 piece (F)
+
+2x3 board -- the 2x3 piece and BF and ABC.
+
+Run stats for 5x5 and 6x5. Note the "possible pieces" can be extracted from all-sets dump.
+
+Adding one to the square dimensions add that many pieces. For instance, we know 8x8 has 36 pieces. Bumping that to 9x9 adds another column on the end of figure??. It adds 9 pieces. 10x10 would add ten more. And so on.
+
+TODO add 19 lowercase letters and stats for 10x10.
+
+max possible in my one-byte-cell model is 1+2+3+...+21+22 = 253 pieces -- 22x22.
+

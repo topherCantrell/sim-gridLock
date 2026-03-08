@@ -1,3 +1,46 @@
+# Pieces:
+# You can specify a set of pieces to use. The default set is ABCDEFGHIJK
+#
+#>9:8x8 cyan
+#>8:8x7 cyan
+#>7:7x7 cyan
+#>6:8x6 cyan
+#>5:7x6  cyan
+#>4:6x6 cyan
+#>3:8x5 cyan
+#>2:7x5 cyan
+#>1:6x5 cyan
+#>0:5x5 cyan
+#>Z:8x4 cyan
+#>Y:7x4 cyan
+#>X:6x4 cyan
+#>W:5x4 cyan
+#>V:4x4 cyan
+#>U:8x3 cyan
+#>T:7x3 cyan
+#>S:6x3 cyan
+#>R:5x3 cyan
+#>Q:8x1 cyan
+#>P:7x1 cyan
+#>O:6x1 cyan
+#>N:8x2 cyan
+#>M:7x2 cyan
+#>L:6x2 cyan
+#
+#>K:4x3 yellow
+#>J:3x3 orange
+#>I:5x2 blue
+#>H:4x2 blue
+#>G:3x2 blue
+#>F:2x2 red
+#>E:5x1 green
+#>D:4x1 green
+#>C:3x1 white
+#>B:2x1 white
+#>A:1x1 white
+
+# Board:
+# Give a starting board. "." means empty. The board can be any width/height.
 
 ........
 ........

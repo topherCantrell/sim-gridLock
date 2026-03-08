@@ -1,3 +1,5 @@
+# Find all starting boards with pieces A, B, and C
+
 >C:3x1 white
 >B:2x1 white
 >A:1x1 white

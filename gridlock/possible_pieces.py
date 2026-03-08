@@ -1,6 +1,9 @@
 from gridlock import pieces
 import subprocess
 import datetime
+import sys
+
+DIMENSION = (8, 8)
 
 def report_all_sets_of_pieces():
     ALL_PIECES = {**pieces.PIECES, **pieces.OTHER_PIECES}
@@ -27,7 +30,7 @@ def report_all_sets_of_pieces():
             started = True
         # print(f'>>> solving for {ps}')
         now = datetime.datetime.now()
-        result = subprocess.run(["cmd/setsofpieces/setsofpieces.exe", ps], capture_output=True, text=True)
+        result = subprocess.run(["cmd/setsofpieces/setsofpieces.exe", str(DIMENSION[0]), str(DIMENSION[1]), ps], capture_output=True, text=True)
         # print(">>>",result.stdout.strip())
         after = datetime.datetime.now()   
         # s,n = result.stdout.split()
@@ -43,9 +46,9 @@ def use_piece(quick, keys, sets_of_pieces, state='', pos=0, area=0):
             raise Exception("Already used piece: " + letter)            
         new_state = state + letter
         new_area = area + quick[letter]
-        if new_area == 64:            
+        if new_area == DIMENSION[0] * DIMENSION[1]:            
             sets_of_pieces.append(new_state)
-        elif new_area < 64:
+        elif new_area < DIMENSION[0] * DIMENSION[1]:
             use_piece(quick, keys, sets_of_pieces, new_state, i+1, new_area)
         else:
             pass  # Move on to next letter
@@ -107,9 +110,12 @@ def report_all_sets_solutions():
 
 if __name__ == '__main__':
 
-    # Pipe this to 'setsolves.txt'
-    # report_all_sets_of_pieces()
+    DIMENSION = (int(sys.argv[1]), int(sys.argv[2]))
+    
 
-    report_all_sets_solutions()
+    # Pipe this to 'setsolves.txt'
+    report_all_sets_of_pieces()
+
+    # report_all_sets_solutions()
 
 

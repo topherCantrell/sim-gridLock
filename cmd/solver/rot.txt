@@ -1,5 +1,8 @@
->B:7x1 white
->A:8x7 white
+# Show mirroring and rotations
+
+>P:7x1 blue
+>8:8x7 red
+>A:1x1 white
 
 ........
 ........

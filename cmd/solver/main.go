@@ -36,8 +36,10 @@ func main() {
 	lines := strings.Split(string(input), "\n")
 
 	// Create a starting board (and pieces) from the input file
-	brd := gridlock.CreateBoard()
+
 	pos := 0
+	width := 0
+	data := make([]byte, 0)
 	givenPieces := make([]gridlock.Piece, 0)
 	for _, line := range lines {
 		line = strings.TrimSpace(line)
@@ -52,11 +54,15 @@ func main() {
 			givenPieces = append(givenPieces, gridlock.Piece{Name: letter, Width: width, Height: height, Color: color})
 			continue
 		}
+		width = len(line)
 		for _, c := range line {
-			brd[pos] = byte(c)
+			data = append(data, byte(c))
 			pos += 1
 		}
 	}
+
+	brd := gridlock.CreateBoard(width, len(data)/width)
+	copy(brd.Cells, data)
 
 	// Find all solutions from the given starting point
 	fmt.Println("Solving Board:")
@@ -87,7 +93,7 @@ func main() {
 		}
 		defer file.Close()
 		for _, solution := range solutions {
-			_, err = file.Write(solution[:])
+			_, err = file.Write(solution.Cells)
 			if err != nil {
 				fmt.Println("Error writing to output file: ", err)
 				return

@@ -5,56 +5,65 @@ import (
 )
 
 // The gridlock game board
-type Board [64]byte
+type Board struct {
+	Width  int
+	Height int
+	Cells  []byte
+}
 
 // Create a blank board
-func CreateBoard() Board {
+func CreateBoard(width int, height int) Board {
+	cells := make([]byte, width*height)
+	for i := range cells {
+		cells[i] = '.'
+	}
 	return Board{
-		'.', '.', '.', '.', '.', '.', '.', '.',
-		'.', '.', '.', '.', '.', '.', '.', '.',
-		'.', '.', '.', '.', '.', '.', '.', '.',
-		'.', '.', '.', '.', '.', '.', '.', '.',
-		'.', '.', '.', '.', '.', '.', '.', '.',
-		'.', '.', '.', '.', '.', '.', '.', '.',
-		'.', '.', '.', '.', '.', '.', '.', '.',
-		'.', '.', '.', '.', '.', '.', '.', '.',
+		Width:  width,
+		Height: height,
+		Cells:  cells,
 	}
 }
 
-var scratchBoard Board = CreateBoard()
+// var scratchBoard Board
 
 // Rotate/mirror a given board. The result is stored in the "brd" parameter.
 // The "numRotations" parameter specifies the number of 90 degree clockwise rotations to perform,
 // followed by a mirror if the number is 4 or greater.
-func (b *Board) RotateInto(brd *Board, numRotations int) {
-	if numRotations >= 4 {
-		// Mirror the board first
-		for y := range 8 {
-			for x := range 8 {
-				brd[y*8+x] = b[(7-y)*8+x]
-			}
-		}
-		numRotations -= 4
-	} else {
-		// Just copy the board to the output
-		copy(brd[:], b[:])
-	}
-	for numRotations > 0 {
-		// Copy the board to a scratch space, then rotate it back into the output
-		copy(scratchBoard[:], brd[:])
-		for y := range 8 {
-			for x := range 8 {
-				c := scratchBoard[(7-x)*8+y]
-				brd[y*8+x] = c
-			}
-		}
-		numRotations -= 1
-	}
-}
+//
+// Any geometry can be mirrored. Only squares can be rotated.
+// func (b *Board) RotateInto(brd *Board, numRotations int) {
+// 	if numRotations >= 4 {
+// 		// Mirror the board into the output
+// 		for y := range b.Height {
+// 			for x := range b.Width {
+// 				brd.Cells[y*b.Width+x] = b.Cells[(b.Height-1-y)*b.Width+x]
+// 			}
+// 		}
+// 		numRotations -= 4
+// 	} else {
+// 		// Just copy the board into the output
+// 		copy(brd.Cells, b.Cells)
+// 	}
+// 	for numRotations > 0 && b.Width == b.Height {
+// 		// Copy the board to a scratch space, then rotate it back into the output
+// 		if scratchBoard.Width != b.Width || scratchBoard.Height != b.Height {
+// 			scratchBoard = CreateBoard(b.Width, b.Height)
+// 		}
+// 		copy(scratchBoard.Cells, brd.Cells)
+// 		for y := range b.Height {
+// 			for x := range b.Width {
+// 				// TODO
+// 				c := scratchBoard.Cells[(7-x)*8+y]
+// 				brd.Cells[y*8+x] = c
+// 			}
+// 		}
+// 		numRotations -= 1
+// 	}
+// }
 
 // Check if board has a piece with the given letter (case-insensitive)
 func (b *Board) HasPiece(letter byte) bool {
-	for _, c := range b {
+	for _, c := range b.Cells {
 		if c == letter {
 			return true
 		}
@@ -64,7 +73,7 @@ func (b *Board) HasPiece(letter byte) bool {
 
 // Check if the board has any empty spaces ('.')
 func (b *Board) HasEmpty() bool {
-	for _, c := range b {
+	for _, c := range b.Cells {
 		if c == '.' {
 			return true
 		}
@@ -87,21 +96,21 @@ func (b *Board) PlacePiece(p Piece, x int, y int, rot bool) bool {
 	}
 	// Place the grid of letters -- stop on first conflict
 	for j := 0; j < height; j++ {
-		if (y + j) >= 8 {
+		if (y + j) >= b.Height {
 			// The Y coordinate is out of bounds
 			return false
 		}
 		for i := 0; i < width; i++ {
-			if (x + i) >= 8 {
+			if (x + i) >= b.Width {
 				// The X coordinate is out of bounds
 				return false
 			}
-			pos := (y+j)*8 + (x + i)
-			if b[pos] != '.' {
+			pos := (y+j)*b.Width + (x + i)
+			if b.Cells[pos] != '.' {
 				// Another piece is already here
 				return false
 			}
-			b[pos] = letter
+			b.Cells[pos] = letter
 		}
 	}
 	// The full piece was placed
@@ -112,19 +121,19 @@ func (b *Board) PlacePiece(p Piece, x int, y int, rot bool) bool {
 // or whole) from anywhere on the board.
 func (b *Board) RemovePiece(p Piece) {
 	v1 := p.Name
-	for index, c := range b {
+	for index, c := range b.Cells {
 		// Convert to uppercase for compare
 		if c == v1 {
-			b[index] = '.'
+			b.Cells[index] = '.'
 		}
 	}
 }
 
 // Print a simple ASCII representation of a board
 func (b *Board) Print() {
-	for index, c := range b {
+	for index, c := range b.Cells {
 		fmt.Print(string(c))
-		if (index+1)%8 == 0 {
+		if (index+1)%b.Width == 0 {
 			fmt.Println()
 		}
 	}
