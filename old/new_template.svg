@@ -1,0 +1,59 @@
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+
+<!--
+
+<g transform="translate(10,10)">
+
+    <rect width="%border_width%" height="%border_height%" x="-4" y="-4" stroke="%border_color%" fill="%border_color%"/>
+    <text x="%text_x%" y="%text_y%" dominant-baseline="central" text-anchor="middle" fill="%border_text_color%"style="font-size: 28">%border_text%</text>    
+    
+    %cells%
+
+    %pieces%
+    
+  </g>
+
+    # Cell
+    <g transform="translate(%cell_x%,%cell_y%)">
+        <rect width="32" height="32" x="0" y="0" stroke="#909090" fill="#909090" />
+        <rect width="16" height="16" x="8" y="8" fill="none" stroke="black"/> 
+    </g>
+
+    # Piece B
+    <g transform="translate(%piece_x%,%piece_y%)">
+        <rect width="60" height="28" x="2" y="2" stroke="white" fill="white"/>
+        <text x="32" y="16" dominant-baseline="central" text-anchor="middle" style="font-size: 28">B</text>
+    </g>
+    # Piece B rotated
+
+-->
+
+  <g transform="translate(10,10)">
+
+    <rect width="72" height="72" x="-4" y="-4" stroke="black" fill="black"/>
+    <text x="32" y="84" dominant-baseline="central" text-anchor="middle" fill="red" style="font-size: 28">67</text>
+
+    <g transform="translate(0,0)">
+        <rect width="32" height="32" x="0" y="0" stroke="#909090" fill="#909090" />
+        <rect width="16" height="16" x="8" y="8" fill="none" stroke="black"/> 
+    </g>
+    <g transform="translate(32,0)">
+        <rect width="32" height="32" x="0" y="0" stroke="#909090"  fill="#909090" />
+        <rect width="16" height="16" x="8" y="8" fill="none" stroke="black"/> 
+    </g>
+    <g transform="translate(32,32)">
+        <rect width="32" height="32" x="0" y="0" stroke="#909090"  fill="#909090" />
+        <rect width="16" height="16" x="8" y="8" fill="none" stroke="black"/> 
+    </g>
+    <g transform="translate(0,32)">
+        <rect width="32" height="32" x="0" y="0" stroke="#909090" fill="#909090" />
+        <rect width="16" height="16" x="8" y="8" fill="none" stroke="black"/> 
+    </g>
+
+    <g transform="translate(0,0)">
+        <rect width="60" height="28" x="2" y="2" stroke="white" fill="white"/>
+        <text x="32" y="16" dominant-baseline="central" text-anchor="middle" style="font-size: 28">B</text>
+    </g>
+    
+  </g>
+</svg>

@@ -6,7 +6,7 @@ class Card:
     def __init__(self, info):
         i = info.index(':')
         self.name = info[:i]
-        self.start_board = Board()
+        self.start_board = Board(8,8)
         info = info[i+1:]
         for i in range(0, len(info), 3):
             letter = info[i+2]

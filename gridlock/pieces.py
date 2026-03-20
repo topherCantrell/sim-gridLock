@@ -8,15 +8,19 @@ class Piece:
 
 OTHER_PIECES = {
     '9': Piece('9', 8, 8, 'teal'),
+    
     '8': Piece('8', 8, 7, 'coral'),
     '7': Piece('7', 7, 7, 'coral'),
+
     '6': Piece('6', 8, 6, 'magenta'),
     '5': Piece('5', 7, 6, 'magenta'),
     '4': Piece('4', 6, 6, 'magenta'),
+
     '3': Piece('3', 8, 5, 'brown'),
     '2': Piece('2', 7, 5, 'brown'),
     '1': Piece('1', 6, 5, 'brown'),
     '0': Piece('0', 5, 5, 'brown'),
+
     'Z': Piece('Z', 8, 4, 'pink'),
     'Y': Piece('Y', 7, 4, 'pink'),
     'X': Piece('X', 6, 4, 'pink'),
@@ -25,13 +29,13 @@ OTHER_PIECES = {
     'U': Piece('U', 8, 3, 'gold'),
     'T': Piece('T', 7, 3, 'gold'),
     'S': Piece('S', 6, 3, 'gold'),
-    'R': Piece('R', 5, 3, 'gold'),    
-    'Q': Piece('N', 8, 2, 'purple'),
-    'P': Piece('M', 7, 2, 'purple'),
-    'O': Piece('L', 6, 2, 'purple'),
-    'N': Piece('Q', 8, 1, 'cyan'),
-    'M': Piece('P', 7, 1, 'cyan'),
-    'L': Piece('O', 6, 1, 'cyan'),
+    'R': Piece('R', 5, 3, 'gold'),
+    'Q': Piece('Q', 8, 2, 'purple'),
+    'P': Piece('P', 7, 2, 'purple'),
+    'O': Piece('O', 6, 2, 'purple'),
+    'N': Piece('N', 8, 1, 'cyan'),
+    'M': Piece('M', 7, 1, 'cyan'),
+    'L': Piece('L', 6, 1, 'cyan'),
 }
 
 PIECES = {
