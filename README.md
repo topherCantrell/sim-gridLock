@@ -6,8 +6,8 @@ Here are the [solutions to all 88 cards.](SOLUTIONS.md)
 
 There are 1,977,968 [(discussion)](#total-solutions) ways to fit every piece on the board.
 
-There are 583,864 ways to fit pieces A, B, and C on the board to start a challenge. These starting boards 
-come in rotational families of 8 (see discussion). Thus there are 583,864 / 8 = 72,983 rotationally-unique 
+There are 583,864 [(discussion)](#total-abc) ways to fit pieces A, B, and C on the board to start a challenge. These starting boards 
+come in rotational families of 8 [(discussion)](#rotations). Thus there are 583,864 / 8 = 72,983 rotationally-unique 
 starting points. Of these, only 13,967 starting positions are winnable.
 
 Out of 13,967 possible start-position cards, the game only includes 88. All of the given cards have exactly 1 solution. There are 1,850 cards that have exactly 1 solution. Most start positions have multiple solutions. (Two of the starts have 1,084 solutions.)
@@ -84,7 +84,7 @@ I wrote the solver in Go for performance: [cmd/solver/main.go]. The program take
 
 <a id="total-solutions"></a>I ran the program with a blank starting board and the 11 given pieces to find all possible solutions. It took just under a minute to find all 1,977,968 possible solutions to the game. The program writes the solutions to a binary file `solutions.bin` for later processing. This 126M binary file is NOT checked into the repo.
 
-# Rotations and Mirroring
+# <a id="rotations">Rotations and Mirroring
 
 Starting with a blank board, there are 1,977,968 possible solutions. These blank-board solutions come in families of 8. When you find a solution, you can rotate
 the board 90, 180, and 270 degrees for 3 more solutions. Then you can mirror the solution left-to-right for another solution. Then rotate that mirrored
@@ -97,7 +97,7 @@ and compared it to the rest of the solutions. As expected, the solutions fit per
 
 When you play the game, you start with a game card that has a single orientation.
 
-# All Possible Cards
+# <a id="total-abc">All Possible Cards
 
 I used the solver with a blank board and pieces A, B, and C to generate "abc_positions.bin" containing all legal starting points. The binary file is
 37,367,296 bytes. Divided by 64, that's 583,864 starting boards. These come in rotation families of 8. If we keep just one starting point from each 
