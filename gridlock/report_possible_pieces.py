@@ -79,10 +79,10 @@ def top_bottom(lst, n):
         print(p)
     print()
 
-def report_all_sets_solutions():
+def report_all_sets_solutions(name):
     solutions = []
     no_solutions = []
-    with open('setsolves.txt', 'r') as f:
+    with open(name, 'r') as f:
         for line in f:
             line = line.strip()
             if not line or line.startswith('>'):
@@ -110,12 +110,7 @@ def report_all_sets_solutions():
 
 if __name__ == '__main__':
 
-    DIMENSION = (int(sys.argv[1]), int(sys.argv[2]))
+    DIMENSION = (int(sys.argv[1]), int(sys.argv[2]))  
     
-
-    # Pipe this to 'setsolves.txt'
-    report_all_sets_of_pieces()
-
-    # report_all_sets_solutions()
-
-
+    report_all_sets_solutions('setsolves8x8.txt')
+    # report_all_sets_of_pieces()

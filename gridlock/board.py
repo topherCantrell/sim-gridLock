@@ -55,3 +55,23 @@ class Board:
                     return False
                 self.data[j*self.width+i] = c
         return True
+    
+    def rotate(self, num_rotations):
+        # TODO this needs to be rotate into and respect the board size
+        ret = bytearray(self.data)
+        if num_rotations >= 4:
+            # Mirror first                       
+            for y in range(8):
+                for x in range(8):
+                    ret[y*8+x] = self.data[(7-y)*8 + x]
+            num_rotations -= 4
+        while num_rotations > 0:            
+            scratch = bytearray(ret)
+            for y in range(8):
+                for x in range(8):
+                    a = scratch[(7-x)*8 + y]                    
+                    ret[8*y + x] = a
+            num_rotations -= 1        
+        b = Board(8,8)
+        b.data = ret
+        return b

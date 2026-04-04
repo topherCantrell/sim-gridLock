@@ -15,6 +15,11 @@
     %TEXT%
 </g>
 
+#### SQUARE: X Y WIDTH HEIGHT COLOR
+<g transform="translate(%X%,%Y%)">
+    <rect width="%WIDTH%" height="%HEIGHT%" x="0" y="0" stroke="%COLOR%" stroke-width="10" fill="none"/>
+</g>
+
 #### BOARD_TEXT: X Y TEXT COLOR
 <text x="%X%" y="%Y%" dominant-baseline="central" text-anchor="middle" fill="%COLOR%" style="font-size: 28">%TEXT%</text>
 

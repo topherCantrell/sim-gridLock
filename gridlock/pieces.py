@@ -7,20 +7,16 @@ class Piece:
         self.color = color
 
 OTHER_PIECES = {
-    '9': Piece('9', 8, 8, 'teal'),
-    
+    '9': Piece('9', 8, 8, 'teal'),    
     '8': Piece('8', 8, 7, 'coral'),
     '7': Piece('7', 7, 7, 'coral'),
-
     '6': Piece('6', 8, 6, 'magenta'),
     '5': Piece('5', 7, 6, 'magenta'),
     '4': Piece('4', 6, 6, 'magenta'),
-
     '3': Piece('3', 8, 5, 'brown'),
     '2': Piece('2', 7, 5, 'brown'),
     '1': Piece('1', 6, 5, 'brown'),
     '0': Piece('0', 5, 5, 'brown'),
-
     'Z': Piece('Z', 8, 4, 'pink'),
     'Y': Piece('Y', 7, 4, 'pink'),
     'X': Piece('X', 6, 4, 'pink'),

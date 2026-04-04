@@ -24,6 +24,12 @@ func main() {
 		outputFile = os.Args[2]
 	}
 
+	stopAfterOne := false
+	if outputFile == "stopAfterOne" {
+		stopAfterOne = true
+		outputFile = ""
+	}
+
 	var err error
 	var input = []byte{}
 
@@ -73,9 +79,9 @@ func main() {
 		for _, piece := range givenPieces {
 			fmt.Printf("%c: %dx%d %s\n", piece.Name, piece.Width, piece.Height, piece.Color)
 		}
-		gridlock.Solve(&brd, &givenPieces, &solutions)
+		gridlock.Solve(&brd, &givenPieces, &solutions, stopAfterOne)
 	} else {
-		gridlock.Solve(&brd, &gridlock.Pieces, &solutions)
+		gridlock.Solve(&brd, &gridlock.Pieces, &solutions, stopAfterOne)
 	}
 
 	// Create the output file if it was provided

@@ -58,7 +58,7 @@ func countSolutionsRecursive(brd *Board, allowed_pieces *[]Piece) {
 
 // Place all remaining pieces on the board. Add any solutions found to the
 // given list of solutions.
-func Solve(brd *Board, allowed_pieces *[]Piece, retSolutions *[]Board) {
+func Solve(brd *Board, allowed_pieces *[]Piece, retSolutions *[]Board, stopAfterOne bool) {
 
 	// Find the largest piece that isn't on the given board
 	fnd := -1
@@ -88,7 +88,10 @@ func Solve(brd *Board, allowed_pieces *[]Piece, retSolutions *[]Board) {
 		for y := range brd.Height {
 			for x := range brd.Width {
 				if brd.PlacePiece(piece, x, y, rot == 1) {
-					Solve(brd, allowed_pieces, retSolutions)
+					Solve(brd, allowed_pieces, retSolutions, stopAfterOne)
+					if stopAfterOne && len(*retSolutions) > 0 {
+						return
+					}
 				}
 				brd.RemovePiece(piece)
 			}
