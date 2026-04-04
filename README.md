@@ -4,7 +4,7 @@ Here are some quick facts about the "Rubik's Grid Lock" universe. A detailed dis
 
 Here are the [solutions to all 88 cards.](SOLUTIONS.md)
 
-There are 1,977,968 [(discussion)](#totalSolutions) ways to fit every piece on the board.
+There are 1,977,968 [(discussion)](#total-solutions) ways to fit every piece on the board.
 
 There are 583,864 ways to fit pieces A, B, and C on the board to start a challenge. These starting boards 
 come in rotational families of 8 (see discussion). Thus there are 583,864 / 8 = 72,983 rotationally-unique 
@@ -69,7 +69,7 @@ All the cards use pieces A, B, and C. Are these 88 cards all of the possible car
 
 The code in [gridlock/report_cards.report_all_possible_cards] generates all legal combinations (no overlaps) of pieces A, B, and C. There are 583,864 possible starting points. To figure out how many of these are solvable, we'll need code to solve a board.
 
-# <a name="totalSolutions"></a>All Solutions
+# All Solutions
 
 The solver algorithm is simple:
   - Find a piece that is not on the board
@@ -82,7 +82,7 @@ The solver algorithm is simple:
 
 I wrote the solver in Go for performance: [cmd/solver/main.go]. The program takes an input text file that gives the starting board and a list of possible pieces.
 
-I ran the program with a blank starting board and the 11 given pieces to find all possible solutions. It took just under a minute to find all 1,977,968 possible solutions to the game. The program writes the solutions to a binary file `solutions.bin` for later processing. This 126M binary file is NOT checked into the repo.
+<a id="total-solutions"></a>I ran the program with a blank starting board and the 11 given pieces to find all possible solutions. It took just under a minute to find all 1,977,968 possible solutions to the game. The program writes the solutions to a binary file `solutions.bin` for later processing. This 126M binary file is NOT checked into the repo.
 
 # Rotations and Mirroring
 
