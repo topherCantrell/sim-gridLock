@@ -4,24 +4,24 @@ Here are some quick facts about the "Rubik's Grid Lock" universe. A detailed dis
 
 Here are the [solutions to all 88 cards.](SOLUTIONS.md)
 
-There are 1,977,968 [(discussion)](#total-solutions) ways to fit every piece on the board.
+There are 1,977,968 [(#)](#total-solutions) ways to fit every piece on the board.
 
-There are 583,864 [(discussion)](#total-abc) ways to fit pieces A, B, and C on the board to start a challenge. These starting boards 
-come in rotational families of 8 [(discussion)](#rotations). Thus there are 583,864 / 8 = 72,983 rotationally-unique 
-starting points. Of these, only 13,967 starting positions are winnable.
+There are 583,864 [(#)](#total-abc) ways to fit pieces A, B, and C on the board to start a challenge. These starting boards 
+come in rotational families of 8 [(#)](#rotations). Thus there are 583,864 / 8 = 72,983 rotationally-unique 
+starting points. Of these, only 13,967 [(#)](#card-counts) starting positions are winnable.
 
-Out of 13,967 possible start-position cards, the game only includes 88. All of the given cards have exactly 1 solution. There are 1,850 cards that have exactly 1 solution. Most start positions have multiple solutions. (Two of the starts have 1,084 solutions.)
+Out of 13,967 possible start-position cards, the game only includes 88. All of the given cards have exactly 1 [(#)](#solution-count) solution. There are 1,850 [(#)](#solution-count) cards that have exactly 1 solution. Most start positions have multiple solutions. (Two of the starts have 1,084 [(#)](#solution-count) solutions.)
 
 The given cards are divided into four levels of challenges (22 cards in each level). I have yet to determine what makes one card harder than any other.
 
 The game ships with 11 pieces, but there are 36 [possible unique pieces](art/possible-pieces.svg) for an 8x8 board.
 
-These 36 pieces can be grouped into 28,725 sets of pieces whose areas total 64 (the 8x8 board's area). But only 17,385 of these sets have solutions. Many sets like 
-ACEFJLVW have just 8 solutions. Set ABCDEFGHILMN has the most pieces (12) and the most solutions (5,324,896).
+These 36 pieces can be grouped into 28,725 [(#)](#possible-pieces) sets of pieces whose areas total 64 (the 8x8 board's area). But only 17,385 [(#)](#todo) of these sets have solutions. Many sets like 
+ACEFJLVW have just 8 [(#)](#todo) solutions. Set ABCDEFGHILMN has the most pieces (12 [(#)](#todo)) and the most solutions (5,324,896 [(#)](#todo)).
 
-There are lots of sets with 11 pieces. The given set ABCDEFGHIJK has the 2nd most solutions: 1,977,968.
+There are lots of sets with 11 pieces. The given set ABCDEFGHIJK has the 2nd most solutions: 1,977,968 [(#)](#todo).
 
-There are other possible board dimensions. For instance, a 5x3 board has 18 winnable sets of pieces. The set 5x3:ABCDE has the most solutions of any set, with 40. Set 5x3:GFCB is in second place with 32.
+There are other possible board dimensions. For instance, a 5x3 board has 18 [(#)](#five-by-three) winnable sets of pieces. The set 5x3:ABCDE has the most solutions of any set, with 40 [(#)](#todo). Set 5x3:GFCB is in second place with 32 [(#)](#todo).
 
 # Rubik's Grid Lock
 
@@ -82,9 +82,18 @@ The solver algorithm is simple:
 
 I wrote the solver in Go for performance: [cmd/solver/main.go]. The program takes an input text file that gives the starting board and a list of possible pieces.
 
+  - [cmd/solver/all.txt](cmd/solver/all.txt) Blank board with the 11 given pieces to generate all solutions
+  - [cmd/solver/abc.txt](cmd/solver/abc.txt) Blank board with just A, B, and C to generate all starting positions
+  - [cmd/solver/challenge.txt](cmd/solver/challenge.txt) Blank board with usage comments
+  - [cmd/solver/three-three.txt](cmd/solver/three-three.txt) Blank 3x3 board and the B, C, F piece set
+  - [cmd/solver/five-three.txt](cmd/solver/five-three.txt) Blank 5x3 board and the A, B, C, D, E piece set
+  - [cmd/solver/twelve-twelve.txt](cmd/solver/twelve-twelve.txt) Bland 12x12 board with pieces: ABCDEFGHIJKOPRST
+
 <a id="total-solutions"></a>I ran the program with a blank starting board and the 11 given pieces to find all possible solutions. It took just under a minute to find all 1,977,968 possible solutions to the game. The program writes the solutions to a binary file `solutions.bin` for later processing. This 126M binary file is NOT checked into the repo.
 
-# <a id="rotations">Rotations and Mirroring
+# Rotations and Mirroring
+
+<a id="rotations"></a>
 
 Starting with a blank board, there are 1,977,968 possible solutions. These blank-board solutions come in families of 8. When you find a solution, you can rotate
 the board 90, 180, and 270 degrees for 3 more solutions. Then you can mirror the solution left-to-right for another solution. Then rotate that mirrored
@@ -95,34 +104,40 @@ solution 90, 180, and 270 degrees for a total of 8 solutions that are tightly re
 The number 1,977,986 is indeed a multiple of 8. I wrote code to sanity-check the 1,977,968 solutions. The code rotated and mirrored each solution
 and compared it to the rest of the solutions. As expected, the solutions fit perfectly into unique families of 8.
 
-When you play the game, you start with a game card that has a single orientation.
+When you play the game, you start with a game card that has a single orientation -- rotations don't matter. But when we construct all possible cards
+next, we don't want two cards to come from the same rotation family. All 88 of the given cards are rotationally unique. You can rotate any card
+to match any other card.
 
-# <a id="total-abc">All Possible Cards
+# All Possible Cards
 
-I used the solver with a blank board and pieces A, B, and C to generate "abc_positions.bin" containing all legal starting points. The binary file is
-37,367,296 bytes. Divided by 64, that's 583,864 starting boards. These come in rotation families of 8. If we keep just one starting point from each 
-family we get 583,864/8 = 72,983 rotationally unique starting points. (The 88 given cards are rotationally unique.)
+<a id="total-abc"></a>
 
+I used the solver with a blank board and pieces A, B, and C to generate "abc_positions.bin" containing all legal starting points. The output binary 
+file `abc_positions.bin` is 37,367,296 bytes. Divided by 64, that's 583,864 starting boards. These come in rotation families of 8. If we keep just 
+one starting point from each family, we get 583,864/8 = 72,983 rotationally unique starting points. (The 88 given cards are rotationally unique as
+checked next.)
 
-TODO need work from here
-The [report_cards.report_all_possible_cards] function loads the "abc_positions.bin" and removes rotational duplicates. The function also loads
-"solutions.bin" (all solutions) and extracts the starting point from each solution by removing all pieces except A, B, and C from the board.
+The [report_cards.report_all_possible_cards] function loads all starting boards from `abc_positions.bin` and removes rotational duplicates. It notes 
+any starting board that is one of the 88 given cards. The function also loads `solutions.bin` (all solutions) and extracts the starting point from 
+each solution by removing all pieces except A, B, and C from the board.
 
-The function compares "abc_positions.bin" and "solutions.bin" to sort the possible starting positions into "winnable" and "nonwinnable". The "winnable.json"
-file contains all possible winning starting positions and and example solution for it. If the starting position is a given card, the card name is added
-to the record.
+The function runs every starting board from `abc_positions.bin` and counts the number of solutions to the board in `solutions.bin`. If there are
+no solutions for a starting board, then that starting board is unwinnable. The starting position is added to the "unwinnable" list. Otherwise,
+the starting position is added to the "winnable" list along with the number of solutions, a single example solution, and the name of the card if
+the starting position is one of the given 88.
 
-The "nonwinnable.json" file contains a list of starting positions that are not winnable.
+The list of "winnables" is written to "winnable.json", and the list of unwinnables is written to "non-winnable.json".
 
-The code found 32,528 winnable starting positions that are rotationally unique. That means there are 32,528 possible starting cards, but
-the game only gives 88 of these.
+<a id="card-counts"></a>
 
-Many of the unwinnable starting points are obviously not winnable. For example, the first starting position here:
+The function found 13,967 winnable abc positions and 59,016 unwinnable abc positions.
+
+Some starting points are obviously not winnable. For example, the first starting position here:
 
 ![](art/unwinnable.svg)
 
 There is a 1x2 hole in the upper left that can only be filled with piece A. But piece A is already fixed to the board. There is no way to fill
-that hole, and the starting point is unwinnable.
+that hole -- this starting point is unwinnable.
 
 If you move A to the left one spot as in the second board, the challenge is winnable with three different solutions. One solution is the 
 3rd board.
@@ -136,28 +151,43 @@ Once D or E are placed, the second row above C requires a height-1 piece -- so t
 at the top of the board, but we are out of height-1 pieces. The board is unsolvable. If the A piece is in the upper left or to the
 right of the E piece on the top row, the gap in the upper-right can be filled with a 2-width piece, as shown in the solution.
 
-TODO numbers from the report on most/least winnable. gridlock.report_winnable
+The [gridlock.report_winnable](gridlock.report_winnable.py) function gives a breakdown on the number of solutions per starting board.
 
+<a id="solution-count"></a>
+```
 Solution counts per winnable position:
-1: 1850 (1850 starting positions have exactly 1 solution. Every card is in this set.)
-2: 2326
-3: 933
-4: 1213
+num-solutions  num-starting-boards
+    1:         1850 (1850 starting positions have exactly 1 solution. Every card is in this set.)
+    2:         2326
+    3:         933
+    4:         1213
 ...
-647: 1
-740: 5
-787: 2
-832: 4
-983: 4
-1084: 2 (two starting positions have 1084 solutions)
+    647:       1
+    740:       5
+    787:       2
+    832:       4
+    983:       4
+    1084:      2 (two starting positions have 1084 solutions)
+```
 
-['CCC............................................B.......B.......A', 1084, 'CCCKKKKEJJJKKKKEJJJKKKKEJJJDDDDEIIIIIFFEIIIIIFFBHHHHGGGBHHHHGGGA']
-['CCC............................................A.......B.......B', 1084, 'CCCKKKKEJJJKKKKEJJJKKKKEJJJDDDDEIIIIIFFEIIIIIFFAHHHHGGGBHHHHGGGB']
+There are 1,850 starting positions that have only 1 solution. All 88 of the given cards are in this list. There are 2,326 starting 
+positions that have 2 solutions. 
 
-TODO: Number of solutions for each card. Does this indicate the difficulty? What makes one card "harder" 
-than another?
+And at the bottom of the list, there are two starting positions that have 1,084 solutions. I believe one of these two would
+be the simplest challenge to solve -- better odds of running into a solution.
 
+![](art/most1084a.svg)
 
+![](art/most1084b.svg)
+
+# Difficulty
+
+What makes one card harder than another? I have yet to determine how the game creators sorted the 88 given cards into
+four difficulty settings.
+
+The search continues.
+
+TODO -- here
 
 # All Possible Pieces
 
